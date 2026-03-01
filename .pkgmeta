@@ -1,20 +1,21 @@
 package-as: ConROC
 
 move-folders:
-  ConROC_Druid: ConROC_Druid
-  ConROC_Hunter: ConROC_Hunter
-  ConROC_Paladin: ConROC_Paladin
-  ConROC_Priest: ConROC_Priest
-  ConROC_Rogue: ConROC_Rogue
-  ConROC_Shaman: ConROC_Shaman
-  ConROC_Warlock: ConROC_Warlock
-  ConROC_Warrior: ConROC_Warrior
+  ConROC/ConROC_Druid: ConROC_Druid
+  ConROC/ConROC_Hunter: ConROC_Hunter
+  ConROC/ConROC_Paladin: ConROC_Paladin
+  ConROC/ConROC_Priest: ConROC_Priest
+  ConROC/ConROC_Rogue: ConROC_Rogue
+  ConROC/ConROC_Shaman: ConROC_Shaman
+  ConROC/ConROC_Warlock: ConROC_Warlock
+  ConROC/ConROC_Warrior: ConROC_Warrior
 
 ignore:
-  - ConROC/chatgpt
   - "**/CHANGES.txt"
   - "**/.gitignore"
+  - "**/* - Copy.lua"
   - CHANGELOG.md
   - icon-tbc.png
   - LICENSE
   - README.md
+  - CLAUDE.md
