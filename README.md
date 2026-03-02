@@ -41,7 +41,7 @@ Extract the zip. Inside you will find a folder named something like `ConROC-TBC-
 Copy the folders you need into your WoW AddOns directory:
 
 ```
-World of Warcraft\_classic_\Interface\AddOns\
+World of Warcraft\_anniversary_\Interface\AddOns\
 ```
 
 You **always need two folders**:
