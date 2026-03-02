@@ -14,6 +14,7 @@ This is a fork of the original [ConROC by Vae2009](https://github.com/Vae2009/Co
 |-------|----------------|
 | 🟢 Druid | Balance · Feral (Cat & Bear) · Restoration |
 | 🏹 Hunter | Beast Mastery · Marksmanship · Survival |
+| 🔮 Mage | Arcane · Fire · Frost |
 | 🟡 Paladin | Holy · Protection · Retribution |
 | 🩺 Priest | Discipline · Holy · Shadow |
 | 🔴 Rogue | Assassination · Combat · Subtlety |
@@ -40,7 +41,7 @@ Extract the zip. Inside you will find a folder named something like `ConROC-TBC-
 Copy the folders you need into your WoW AddOns directory:
 
 ```
-World of Warcraft\_classic_era_\Interface\AddOns\
+World of Warcraft\_classic_\Interface\AddOns\
 ```
 
 You **always need two folders**:
@@ -59,12 +60,15 @@ At the character select screen, click **AddOns** and make sure both `ConROC` and
 
 Once in game, ConROC displays a visual indicator showing your next recommended ability. Suggestions update in real time based on your current buffs, debuffs, cooldowns, resources, and talent spec.
 
+**Auto AoE Detection** — ConROC can automatically switch between Single Target and AoE rotation based on how many enemies are nearby. Enable it in `/ConROC` settings and set your preferred enemy count threshold and detection range. Manually clicking the Single/AoE toggle overrides the automatic switching for 5 seconds.
+
 **Slash Commands:**
 
 | Command | Description |
 |---------|-------------|
-| `/conroc` | Toggle the addon on/off |
+| `/conroc` | Open the settings panel |
 | `/conroc menu` | Open the spell configuration menu |
+| `/ConROCUL` | Lock/unlock window positions |
 | `/ConROCPT` | Print your talent tree with IDs (debugging) |
 
 ---
@@ -78,7 +82,7 @@ This fork resolves significant issues that prevented ConROC from running in TBC 
 - Correct TBC spell IDs and ranks implemented across all class modules
 - Spell rank flexibility — any rank of a suggested spell now satisfies the rotation, preventing stalls when using downranked spells for mana efficiency
 - Automatic talent-based spec detection across all classes
-- Interface version correctly set to `20504` (TBC Anniversary)
+- Interface version correctly set to `20505` (TBC Anniversary 2.5.5)
 
 See [CHANGELOG.md](CHANGELOG.md) for the full detail of changes per class.
 
