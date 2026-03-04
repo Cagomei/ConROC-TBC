@@ -18,6 +18,16 @@ This project began as a fork of [ConROC by Vae2009](https://github.com/Vae2009/C
 
 ---
 
+## [2.3.1] – Hotfix: CurseForge Load Order
+
+### Fixed
+
+- **CurseForge install error** – Players installing ConROC without other Ace3-embedding addons (ElvUI, Bartender4, etc.) received `helper.lua:1: attempt to index global 'ConROC' (a nil value)` on every load. The bundled Ace3 libraries (AceGUI, AceConfig, AceConsole, AceEvent, AceTimer, AceDB, AceDBOptions) were never loaded because `Libs\Libs.xml` was missing from the TOC — only four libraries were listed individually. `core.lua` called `LibStub('AceGUI-3.0')` on its first line, which failed on clean installs and crashed the file before `ConROC` was created.
+- Fixed by replacing the individual library TOC entries with `Libs\Libs.xml`, which correctly loads the full Ace3 suite.
+- `Locale\locale.xml` load order also corrected — moved to after `core.lua` in the TOC and removed from `Libs\Libs.xml` to avoid loading locale before the `ConROC` global exists.
+
+---
+
 ## [2.2.0] – Mage Module
 
 ### Added
