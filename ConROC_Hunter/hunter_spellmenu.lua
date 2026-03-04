@@ -33,6 +33,7 @@ local defaults = {
 	["ConROC_Ranged_Ability_RapidFire"] = true,
 	["ConROC_Ranged_Ability_BestialWrath"] = true,
 	["ConROC_Ranged_Ability_MultiShot"] = true,
+	["ConROC_Ranged_Ability_SteadyShot"] = true,
 	["ConROC_Ranged_Ability_RaptorStrike"] = true,
 	["ConROC_Ranged_Ability_MongooseBite"] = true,
 	["ConROC_Ranged_Ability_Counterattack"] = true,
@@ -41,6 +42,8 @@ local defaults = {
 	["ConROC_Ranged_Stun_WingClip"] = false,
 	["ConROC_Ranged_Stun_Intimidation"] = false,
 	["ConROC_Ranged_Stun_ScatterShot"] = false,
+	["ConROC_Ranged_AoE_MultiShot"] = true,
+	["ConROC_Ranged_AoE_Volley"] = true,
 	["ConROC_Ranged_Option_AutoShot"] = true,
 	["ConROC_Ranged_Option_AoE"] = false,
 
@@ -53,6 +56,7 @@ local defaults = {
 	["ConROC_Melee_Ability_RapidFire"] = true,
 	["ConROC_Melee_Ability_BestialWrath"] = true,
 	["ConROC_Melee_Ability_MultiShot"] = true,
+	["ConROC_Melee_Ability_SteadyShot"] = false,
 	["ConROC_Melee_Ability_RaptorStrike"] = true,
 	["ConROC_Melee_Ability_MongooseBite"] = true,
 	["ConROC_Melee_Ability_Counterattack"] = true,
@@ -61,6 +65,8 @@ local defaults = {
 	["ConROC_Melee_Stun_WingClip"] = false,
 	["ConROC_Melee_Stun_Intimidation"] = false,
 	["ConROC_Melee_Stun_ScatterShot"] = false,
+	["ConROC_Melee_AoE_MultiShot"] = true,
+	["ConROC_Melee_AoE_Volley"] = false,
 	["ConROC_Melee_Option_AutoShot"] = true,
 	["ConROC_Melee_Option_AoE"] = false,
 }
@@ -191,6 +197,7 @@ function ConROC:RotationChoices()
 	    	{spellID = ids.Ability.AimedShot, spellCheckbox = "Ability_AimedShot", reqLevel = 20, type = "spell"},
 	    	{spellID = ids.Ability.RapidFire, spellCheckbox = "Ability_RapidFire", reqLevel = 26, type = "spell"},
 	    	{spellID = ids.Ability.BestialWrath, spellCheckbox = "Ability_BestialWrath", reqLevel = 40, type = "spell"},
+	    	{spellID = ids.Ability.SteadyShot, spellCheckbox = "Ability_SteadyShot", reqLevel = 62, type = "spell"},
 	    	{spellID = ids.Ability.MultiShot, spellCheckbox = "Ability_MultiShot", reqLevel = 18, type = "spell"},
 	    	{spellID = ids.Ability.RaptorStrike, spellCheckbox = "Ability_RaptorStrike", reqLevel = 1, type = "spell"},
 	    	{spellID = ids.Ability.MongooseBite, spellCheckbox = "Ability_MongooseBite", reqLevel = 16, type = "spell"},
@@ -218,6 +225,14 @@ function ConROC:RotationChoices()
 	    groupType = "checkBoxes"
 	  	},
 	  	{
+	    frameName = "AoEs",
+	    spells = {
+	    	{spellID = ids.Ability.MultiShot, spellCheckbox = "AoE_MultiShot", reqLevel = 18, type = "spell"},
+	    	{spellID = ids.Ability.Volley, spellCheckbox = "AoE_Volley", reqLevel = 40, type = "spell"},
+	    },
+	    groupType = "checkBoxes"
+	  	},
+  	{
 	    frameName = "Options",
 	    spells = {
 		    {spellID = "AoE Toggle Button", spellCheckbox = "Option_AoE", reqLevel = 18, type = "aoetoggler"},

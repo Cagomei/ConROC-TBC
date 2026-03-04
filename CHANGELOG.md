@@ -6,6 +6,21 @@ This project began as a fork of [ConROC by Vae2009](https://github.com/Vae2009/C
 
 ---
 
+## [2.4.0] – Hunter Module Overhaul & Dominos Fix
+
+### Fixed
+
+- **Hunter – AOE rotation priority** – MultiShot and Volley now fire immediately after cooldowns (Hunter's Mark → Bestial Wrath → Rapid Fire → MultiShot → Volley → Arcane Shot filler) when AoE mode is active. Previously they were placed after Aimed Shot and all stings, making the AoE rotation nearly identical to single-target. Stings and Aimed Shot are skipped in AoE mode as they are single-target only.
+- **Hunter – Volley dead code** – Volley referenced a nil UI checkbox (`ConROC_SM_Ability_Volley`) and could never be suggested. A dedicated "AoEs" spellmenu section (matching Mage/Warlock) now provides separate MultiShot and Volley checkboxes (`AoE_MultiShot`, `AoE_Volley`) for use in AoE mode.
+- **Hunter – Arcane Shot mana gate** – Arcane Shot was blocked below 50% mana, causing the rotation to suggest nothing but Auto Shot for the remainder of a fight. The redundant mana check was removed; mana sufficiency is already enforced by `IsSpellUsable()` inside `AbilityReady()`.
+- **Dominos – `ActionButton_GetPagedID` nil error** – `FetchDominos` and `DefFetchDominos` called `ActionButton_GetPagedID` unconditionally, which does not exist in TBC Classic and caused a hard error on load for any player using Dominos. The call is now guarded with a nil check; `ActionButton_CalculateAction` is used as the fallback, matching the existing intent of the code.
+
+### Added
+
+- **Hunter – Steady Shot** – Steady Shot (spell ID 34120) was missing from the module entirely. Added as the primary single-target filler in the ranged rotation (before Arcane Shot), with a checkbox in the Abilities spellmenu section. Enabled by default for Ranged role; disabled for Melee role.
+
+---
+
 ## [2.3.2] – Hotfix: Nameplate Nil Error on Combat Entry
 
 ### Fixed

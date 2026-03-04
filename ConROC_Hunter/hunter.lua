@@ -1,4 +1,4 @@
-ConROC.Hunter = {};
+﻿ConROC.Hunter = {};
 
 local ConROC_Hunter, ids = ...;
 
@@ -101,6 +101,7 @@ function ConROC.Hunter.Damage(_, timeShift, currentSpell, gcd)
 
 	local _AimedShot, _AimedShot_RDY = ConROC:AbilityReady(Ability.AimedShot, timeShift);
 	local _ArcaneShot, _ArcaneShot_RDY = ConROC:AbilityReady(Ability.ArcaneShot, timeShift);
+	local _SteadyShot, _SteadyShot_RDY = ConROC:AbilityReady(Ability.SteadyShot, timeShift);
 	local _ConcussiveShot, _ConcussiveShot_RDY = ConROC:AbilityReady(Ability.ConcussiveShot, timeShift);
 	local _HuntersMark, _HuntersMark_RDY = ConROC:AbilityReady(Ability.HuntersMark, timeShift);
 		local _HuntersMark_BUFF = ConROC:TargetAura(_HuntersMark, timeShift);
@@ -291,6 +292,35 @@ function ConROC.Hunter.Damage(_, timeShift, currentSpell, gcd)
 						break;
 					end
 
+					-- AOE branch: prioritize AOE spells early, skip single-target fillers
+					if ConROC_AoEButton:IsVisible() then
+						if ConROC:CheckBox(ConROC_SM_AoE_MultiShot) and _MultiShot_RDY then
+							tinsert(ConROC.SuggestedSpells, _MultiShot);
+							_MultiShot_RDY = false;
+							_Queue = _Queue + 1;
+							break;
+						end
+
+						if ConROC:CheckBox(ConROC_SM_AoE_Volley) and _Volley_RDY then
+							tinsert(ConROC.SuggestedSpells, _Volley);
+							_Volley_RDY = false;
+							_Queue = _Queue + 1;
+							break;
+						end
+
+						if _ArcaneShot_RDY and currentSpell ~= _AimedShot then
+							tinsert(ConROC.SuggestedSpells, _ArcaneShot);
+							_ArcaneShot_RDY = false;
+							_Queue = _Queue + 1;
+							break;
+						end
+
+						tinsert(ConROC.SuggestedSpells, _AutoShot); --Waiting Spell Icon
+						_Queue = _Queue + 3;
+						break;
+					end
+
+					-- Single-target rotation
 					if ConROC:CheckBox(ConROC_SM_Ability_AimedShot) and _AimedShot_RDY and currentSpell ~= _AimedShot then
 						tinsert(ConROC.SuggestedSpells, _AimedShot);
 						_AimedShot_RDY = false;
@@ -319,21 +349,21 @@ function ConROC.Hunter.Damage(_, timeShift, currentSpell, gcd)
 						break;
 					end
 
-					if (ConROC_AoEButton:IsVisible() and ConROC:CheckBox(ConROC_SM_Ability_MultiShot)) and _MultiShot_RDY then
+					if ConROC:CheckBox(ConROC_SM_Ability_MultiShot) and _MultiShot_RDY then
 						tinsert(ConROC.SuggestedSpells, _MultiShot);
 						_MultiShot_RDY = false;
 						_Queue = _Queue + 1;
 						break;
 					end
 
-					if (ConROC_AoEButton:IsVisible() and ConROC:CheckBox(ConROC_SM_Ability_Volley)) and _Volley_RDY then
-						tinsert(ConROC.SuggestedSpells, _Volley);
-						_Volley_RDY = false;
+					if ConROC:CheckBox(ConROC_SM_Ability_SteadyShot) and _SteadyShot_RDY and currentSpell ~= _AimedShot and currentSpell ~= _SteadyShot then
+						tinsert(ConROC.SuggestedSpells, _SteadyShot);
+						_SteadyShot_RDY = false;
 						_Queue = _Queue + 1;
 						break;
 					end
 
-					if _ArcaneShot_RDY and currentSpell ~= _AimedShot and ((_Mana_Percent >= 50) or _is_moving or (_Target_Percent_Health <= 5 and ConROC:Raidmob()) or (_Target_Percent_Health <= 20 and not ConROC:Raidmob())) then
+					if _ArcaneShot_RDY and currentSpell ~= _AimedShot then
 						tinsert(ConROC.SuggestedSpells, _ArcaneShot);
 						_ArcaneShot_RDY = false;
 						_Queue = _Queue + 1;
