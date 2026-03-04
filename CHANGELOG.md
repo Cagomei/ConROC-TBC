@@ -6,6 +6,14 @@ This project began as a fork of [ConROC by Vae2009](https://github.com/Vae2009/C
 
 ---
 
+## [2.3.2] – Hotfix: Nameplate Nil Error on Combat Entry
+
+### Fixed
+
+- **Nameplate combat error** – Entering combat caused `helper.lua:125: attempt to index field` when `ConROC.db.profile` nameplate alpha values were not yet configured. `forceNameplates()` now guards against a nil DB/profile and skips `SetCVar` calls when the profile keys are absent. `restoreNameplates()` also guards against nil defaults to prevent errors when leaving combat if `forceNameplates` never completed.
+
+---
+
 ## [2.3.0] – Auto AoE Detection
 
 ### Added

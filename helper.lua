@@ -114,26 +114,34 @@ local defaultNameplateMaxAlpha
 local defaultNameplateNotSelectedAlpha
 local defaultNameplateSelectedAlpha
 function ConROC:forceNameplates()
+	if not ConROC.db or not ConROC.db.profile then return end
 	defaultEnemyNameplates = GetCVar("nameplateShowEnemies")
 	if defaultEnemyNameplates ~= 1 then
 		defaultNameplateMinAlpha = GetCVar("nameplateMinAlpha")
 		defaultNameplateMaxAlpha = GetCVar("nameplateMaxAlpha")
 		defaultNameplateNotSelectedAlpha = GetCVar("nameplateNotSelectedAlpha")
 		defaultNameplateSelectedAlpha = GetCVar("nameplateSelectedAlpha")
-  		--SetCVar("nameplateOtherMinAlpha", ConROC.db.profile.nameplatesMinAlpha)
-		--SetCVar("nameplateOtherMaxAlpha", ConROC.db.profile.nameplatesMaxAlpha)
-		SetCVar("nameplateNotSelectedAlpha", ConROC.db.profile.nameplateNotSelectedAlpha)
-		SetCVar("nameplateSelectedAlpha", ConROC.db.profile.nameplateSelectedAlpha)
+		if ConROC.db.profile.nameplateNotSelectedAlpha then
+			SetCVar("nameplateNotSelectedAlpha", ConROC.db.profile.nameplateNotSelectedAlpha)
+		end
+		if ConROC.db.profile.nameplateSelectedAlpha then
+			SetCVar("nameplateSelectedAlpha", ConROC.db.profile.nameplateSelectedAlpha)
+		end
   		SetCVar("nameplateShowEnemies", 1)
   	end
 end
 
 function ConROC:restoreNameplates()
-	-- Restore default settings 
-	--SetCVar("nameplateMinAlpha", defaultNameplateMinAlpha) 
+	if not defaultEnemyNameplates then return end
+	-- Restore default settings
+	--SetCVar("nameplateMinAlpha", defaultNameplateMinAlpha)
 	--SetCVar("nameplateMaxAlpha", defaultNameplateMaxAlpha)
-	SetCVar("nameplateNotSelectedAlpha", defaultNameplateNotSelectedAlpha)
-	SetCVar("nameplateSelectedAlpha", defaultNameplateSelectedAlpha)
+	if defaultNameplateNotSelectedAlpha then
+		SetCVar("nameplateNotSelectedAlpha", defaultNameplateNotSelectedAlpha)
+	end
+	if defaultNameplateSelectedAlpha then
+		SetCVar("nameplateSelectedAlpha", defaultNameplateSelectedAlpha)
+	end
 	SetCVar('nameplateShowEnemies', defaultEnemyNameplates)
 end
 
