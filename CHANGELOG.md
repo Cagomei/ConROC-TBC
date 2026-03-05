@@ -6,6 +6,14 @@ This project began as a fork of [ConROC by Vae2009](https://github.com/Vae2009/C
 
 ---
 
+## [2.4.1] – Dominos ActionButton_CalculateAction Fix
+
+### Fixed
+
+- **Dominos – `ActionButton_CalculateAction` nil error** – `FetchDominos`, `DefFetchDominos`, and the ElvUI/ButtonForge slot lookup all called `ActionButton_CalculateAction` without a nil guard. On TBC clients where this API function does not exist, enabling the rotation with Dominos loaded caused a hard error. The call is now guarded identically to `ActionButton_GetPagedID`, falling through to `button:GetAttribute('action')` when neither function is available.
+
+---
+
 ## [2.4.0] – Hunter Module Overhaul & Dominos Fix
 
 ### Fixed

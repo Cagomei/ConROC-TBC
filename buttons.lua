@@ -1844,7 +1844,7 @@ function ConROC:DefAddStandardButton(button, hotkey)
         if buttonType == 'action' then
         local slot = button:GetAttribute('action') or button.action
             if not slot or slot == 0 then
-                slot = ActionButton_CalculateAction(button);
+                slot = ActionButton_CalculateAction and ActionButton_CalculateAction(button) or 0;
             end
 
             if HasAction(slot) then
@@ -2036,7 +2036,7 @@ function ConROC:FetchDominos()
 	for i = 1, 60 do
 		local button = _G['DominosActionButton' .. i];
 		if button then
-			local slot = (ActionButton_GetPagedID and ActionButton_GetPagedID(button)) or ActionButton_CalculateAction(button) or button:GetAttribute('action') or 0;
+			local slot = (ActionButton_GetPagedID and ActionButton_GetPagedID(button)) or (ActionButton_CalculateAction and ActionButton_CalculateAction(button)) or button:GetAttribute('action') or 0;
 			if HasAction(slot) then
 				local spellID, _;
 				local actionType, id = GetActionInfo(slot);
@@ -2069,7 +2069,7 @@ function ConROC:DefFetchDominos()
 	for i = 1, 60 do
 		local button = _G['DominosActionButton' .. i];
 		if button then
-			local slot = (ActionButton_GetPagedID and ActionButton_GetPagedID(button)) or ActionButton_CalculateAction(button) or button:GetAttribute('action') or 0;
+			local slot = (ActionButton_GetPagedID and ActionButton_GetPagedID(button)) or (ActionButton_CalculateAction and ActionButton_CalculateAction(button)) or button:GetAttribute('action') or 0;
 			if HasAction(slot) then
 				local spellID, _;
 				local actionType, id = GetActionInfo(slot);
