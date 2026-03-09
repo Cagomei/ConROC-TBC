@@ -52,16 +52,14 @@ ConROC.totemVariables = {
 }
 
 function ConROC:PLAYER_TOTEM_UPDATE()
-    if ConROC:CheckBox(ConROC_SM_Option_Totems) then
-    	local totems = ids.Totems;
-        for i = 1, 4 do
-            local haveTotem, totemName, startTime, duration, icon = GetTotemInfo(i)
-            if haveTotem and totemName ~= nil then
-                for _, totem in ipairs(totems) do
-                    if string.find(totemName, totem[1]) then
-                        ConROC.totemVariables[totem[2]] = startTime + duration
-                        break  -- No need to continue checking other totems
-                    end
+    local totems = ids.Totems;
+    for i = 1, 4 do
+        local haveTotem, totemName, startTime, duration, icon = GetTotemInfo(i)
+        if haveTotem and totemName ~= nil then
+            for _, totem in ipairs(totems) do
+                if string.find(totemName, totem[1]) then
+                    ConROC.totemVariables[totem[2]] = startTime + duration
+                    break
                 end
             end
         end
@@ -94,7 +92,7 @@ local _Mana, _Mana_Max = ConROC:PlayerPower('Mana');
 
 --Conditions
 local _Queue = 0;
-local _is__is_moving = ConROC:PlayerSpeed();
+local _is_moving = ConROC:PlayerSpeed();
 local _enemies_in_melee, _target_in_melee = ConROC:Targets("Melee");
 local _enemies_in_10yrds, _target_in_10yrds = ConROC:Targets("10");
 local _enemies_in_20yrds, _target_in_20yrds = ConROC:Targets("20");
@@ -145,6 +143,7 @@ function ConROC.Shaman.Damage(_, timeShift, currentSpell, gcd)
     local _FrostShock, _FrostShock_RDY = ConROC:AbilityReady(Ability.FrostShock, timeShift);
         local _FrostShock_DEBUFF = ConROC:TargetAura(_FrostShock, timeShift);
 	local _LightningBolt, _LightningBolt_RDY = ConROC:AbilityReady(Ability.LightningBolt, timeShift);
+	local _LightningShield, _ = ConROC:AbilityReady(Ability.LightningShield, timeShift);
         local _, _LightningShield_CHARGE = ConROC:Aura(_LightningShield, timeShift);
 	local _Purge, _Purge_RDY = ConROC:AbilityReady(Ability.Purge, timeShift);
     local _Stormstrike, _Stormstrike_RDY = ConROC:AbilityReady(Ability.Stormstrike, timeShift);
@@ -278,7 +277,7 @@ function ConROC.Shaman.Damage(_, timeShift, currentSpell, gcd)
     			_mhTexture = "0,0,0,0";	
             end
             if _ohP == nil then
-                _ohp = "none"
+                _ohP = "none"
                 _ohEnchID = false
     			_ohTexture = "0,0,0,0";	
             end
@@ -406,32 +405,34 @@ function ConROC.Shaman.Damage(_, timeShift, currentSpell, gcd)
                     break;
                 end
 
-                if _SearingTotem_RDY and _SearingTotem_DUR < 0.1 and _target_in_20yrds then
-                    tinsert(ConROC.SuggestedSpells, _SearingTotem);
-                    _SearingTotem_RDY = false;
-                    _Queue = _Queue + 1;
-                    break;
-                end
+                if ConROC:CheckBox(ConROC_SM_Option_Totems) then
+                    if _SearingTotem_RDY and _SearingTotem_DUR < 0.1 and _target_in_20yrds then
+                        tinsert(ConROC.SuggestedSpells, _SearingTotem);
+                        _SearingTotem_RDY = false;
+                        _Queue = _Queue + 1;
+                        break;
+                    end
 
-                if _StrengthofEarthTotem_RDY and _StrengthofEarthTotem_DUR < 0.1 and _target_in_20yrds then
-                    tinsert(ConROC.SuggestedSpells, _StrengthofEarthTotem);
-                    _StrengthofEarthTotem_RDY = false;
-                    _Queue = _Queue + 1;
-                    break;
-                end
+                    if _StrengthofEarthTotem_RDY and _StrengthofEarthTotem_DUR < 0.1 and _target_in_20yrds then
+                        tinsert(ConROC.SuggestedSpells, _StrengthofEarthTotem);
+                        _StrengthofEarthTotem_RDY = false;
+                        _Queue = _Queue + 1;
+                        break;
+                    end
 
-                if _GraceofAirTotem_RDY and _GraceofAirTotem_DUR < 0.1 and _target_in_20yrds then
-                    tinsert(ConROC.SuggestedSpells, _GraceofAirTotem);
-                    _GraceofAirTotem_RDY = false;
-                    _Queue = _Queue + 1;
-                    break;
-                end
+                    if _GraceofAirTotem_RDY and _GraceofAirTotem_DUR < 0.1 and _target_in_20yrds then
+                        tinsert(ConROC.SuggestedSpells, _GraceofAirTotem);
+                        _GraceofAirTotem_RDY = false;
+                        _Queue = _Queue + 1;
+                        break;
+                    end
 
-                if _ManaSpringTotem_RDY and _ManaSpringTotem_DUR < 0.1 and _target_in_20yrds then
-                    tinsert(ConROC.SuggestedSpells, _ManaSpringTotem);
-                    _ManaSpringTotem_RDY = false;
-                    _Queue = _Queue + 1;
-                    break;
+                    if _ManaSpringTotem_RDY and _ManaSpringTotem_DUR < 0.1 and _target_in_20yrds then
+                        tinsert(ConROC.SuggestedSpells, _ManaSpringTotem);
+                        _ManaSpringTotem_RDY = false;
+                        _Queue = _Queue + 1;
+                        break;
+                    end
                 end
 
                 if ConROC_AoEButton:IsVisible() then
@@ -480,7 +481,7 @@ function ConROC.Shaman.Damage(_, timeShift, currentSpell, gcd)
                         break;
                     end
 
-                    if _SearingTotem_RDY and _SearingTotem_DUR < 0.1 then
+                    if ConROC:CheckBox(ConROC_SM_Option_Totems) and _SearingTotem_RDY and _SearingTotem_DUR < 0.1 then
                         tinsert(ConROC.SuggestedSpells, _SearingTotem);
                         _Queue = _Queue + 1;
                         break;

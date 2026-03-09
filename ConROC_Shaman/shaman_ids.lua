@@ -275,7 +275,6 @@ ids.Debuff = {
 }
 ids.Totems = {
 	{"Disease Cleansing Totem", "dcTotemEXP"},
-	{"Fire Nova Totem", "fnovaTotemEXP"},
 	{"Grace of Air Totem", "goaTotemEXP"},
 	{"Poison Cleansing Totem", "pcTotemEXP"},
 	{"Tranquil Air Totem", "taTotemEXP"},

@@ -6,6 +6,20 @@ This project began as a fork of [ConROC by Vae2009](https://github.com/Vae2009/C
 
 ---
 
+## [2.7.0] – Shaman Module Review
+
+### Fixed
+
+- **Shaman – Totem checkbox ignored in SoD rotation** – Unchecking "Suggest totems in rotation" had no effect on the Season of Discovery rotation path. All four totem suggestions (Searing Totem, Strength of Earth Totem, Grace of Air Totem, Mana Spring Totem) in the SoD block were inserted into `SuggestedSpells` without any checkbox guard. Wrapped all four in `ConROC:CheckBox(ConROC_SM_Option_Totems)`, matching the existing guard already in the Pre-SoD Caster path. This was the user-reported bug.
+- **Shaman – Totem checkbox ignored in Pre-SoD Melee rotation** – The same missing checkbox guard affected Searing Totem in the Pre-SoD Melee role path (line 483). Added `ConROC:CheckBox(ConROC_SM_Option_Totems)` inline with the condition.
+- **Shaman – Fire Nova Totem duration tracking completely broken** – `ids.Totems` contained two entries matching `"Fire Nova Totem"`: the first mapped to `"fnovaTotemEXP"` and the second (the correct one) to `"fnTotemEXP"`. Because `PLAYER_TOTEM_UPDATE` breaks on the first match, `fnovaTotemEXP` (a key that doesn't exist in `ConROC.totemVariables`) was always updated while `fnTotemEXP` stayed at 0. The rotation reads `fnTotemEXP`, so Fire Nova Totem duration was always stale and the totem was suggested on every rotation tick regardless of whether one was active. Removed the duplicate entry.
+- **Shaman – `_LightningShield` undeclared in `Damage()`** – The Rolling Thunder condition at line 395 reads `_LightningShield_CHARGE`, which is derived from `ConROC:Aura(_LightningShield, ...)`. However `_LightningShield` was only declared in `Defense()`, never in `Damage()`. The aura lookup silently received `nil`, making `_LightningShield_CHARGE` always `nil`/0 and the Rolling Thunder charge threshold check non-functional. Added `local _LightningShield, _ = ConROC:AbilityReady(Ability.LightningShield, timeShift)` in `Damage()`.
+- **Shaman – Totem duration tracking halts when checkbox is unchecked** – `PLAYER_TOTEM_UPDATE` was gated by `ConROC:CheckBox(ConROC_SM_Option_Totems)`. If the option was unchecked while totems were active, the stored expiration times became stale. Re-enabling the checkbox would then cause incorrect duration reads (e.g. always suggesting totems because stored expiry appeared expired). Removed the checkbox gate from the event handler — durations are now always tracked regardless of the option, and the checkbox only gates whether totems appear in rotation suggestions.
+- **Shaman – `_ohP` variable typo in imbue logic** – A nil-check fallback at line 281 assigned `_ohp = "none"` (lowercase `p`), leaving `_ohP` nil. The subsequent comparison `if _ohP ~= "none"` would always mismatch, causing the offhand "None" imbue path to malfunction. Fixed to `_ohP`.
+- **Shaman – `_is__is_moving` double-prefix typo** – The module-level initialisation declared `local _is__is_moving = ConROC:PlayerSpeed()` (double `_is_` prefix), creating a dead local that was never read. The correct `_is_moving` used throughout the rotation is set in `Stats()`. Removed the dead declaration by correcting the name to `_is_moving`.
+
+---
+
 ## [2.6.1] – Priest SWP Debuff Detection Fix
 
 ### Fixed
