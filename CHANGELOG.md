@@ -6,6 +6,25 @@ This project began as a fork of [ConROC by Vae2009](https://github.com/Vae2009/C
 
 ---
 
+## [2.8.0] – Rogue Module Overhaul
+
+### Fixed
+
+- **Rogue – Combat rotation permanently stuck on "wait"** – All core abilities (Sinister Strike, Eviscerate, Backstab, Rupture, etc.) only had Classic-era rank IDs defined. In the TBC client, `AbilityReady()` fails for superseded rank IDs, causing every spell check to return false and the rotation to fall through to the wait indicator. Added TBC ranks for all core abilities (Sinister Strike R9/R10, Eviscerate R9/R10, Backstab R10, Rupture R7, Ambush R7, Garrote R7, Expose Armor R6, Hemorrhage R4, Kick R5, Gouge R6, Feint R5/R6) and updated `UpdateSpellID()` to detect and assign the highest known rank.
+- **Rogue – Deadly Poison suggests Rank 4 instead of Rank 7** – The level-based poison selection in `UpdateSpellID()` capped at `_Player_Level >= 54` → Rank 4, leaving Rank 5 (which existed in the data but was never assigned) and TBC Ranks 6 and 7 completely unused. Extended the thresholds: Rank 5 at level 60, Rank 6 at level 62, Rank 7 at level 70.
+- **Rogue – Instant Poison suggests Rank 6 instead of Rank 7** – Level threshold capped at level 60 → Rank 6. Added level 68 → Rank 7 (TBC).
+- **Rogue – Wound Poison missing Rank 5** – Level threshold capped at level 56 → Rank 4. Added level 68 → Rank 5 (TBC).
+- **Rogue – Applied TBC poisons not recognised (always prompts to re-apply)** – `ids.ActivePoison` only contained Classic enchant IDs. Weapon enchant IDs for Deadly Poison VI/VII, Instant Poison VII, Wound Poison V, and Anesthetic Poison were missing, so `GetWeaponEnchantInfo()` lookups returned nil and the addon treated every TBC poison as "not applied". Added all missing TBC enchant ID entries.
+- **Rogue – Backstab uses wrong rank for levels below 60** – A copy-paste error in `UpdateSpellID()` caused every non-SoD rank branch for Backstab Ranks 2–8 to assign `BackstabRank9` (level 60) regardless of which rank actually matched. A level 10 rogue who only knew Rank 2 would have the addon attempt to use the Rank 9 spell ID. Each branch now assigns its own correct rank.
+- **Rogue – Anesthetic Poison off-hand alpha indicator inverted** – The alpha dimming check on the off-hand Anesthetic Poison block used `~=` instead of `==`, so the icon was dimmed when the poison was *not* applied and bright when it *was* — the opposite of every other poison. Fixed to `==`.
+- **Rogue – Anesthetic Poison missing from spell menu** – `rogue.lua` already checked `ConROC_SM_PoisonMH_Anesthetic` and `ConROC_SM_PoisonOH_Anesthetic`, but the spell menu UI never created these radio buttons, causing a nil reference. Added Anesthetic Poison (available at level 68) to both the Main Hand and Off Hand poison selection groups.
+
+### Added
+
+- **Rogue – Anesthetic Poison support** – Full support for the TBC poison: item ID, enchant ID, rank definition, level threshold (68), spell menu radio buttons for both weapon slots, and weapon enchant detection.
+
+---
+
 ## [2.7.1] – Action Bar Spell Detection Fix
 
 ### Fixed

@@ -135,6 +135,7 @@ function ConROC:RotationChoices()
           {spellID = ids.Poisons.MindnumbingPoison, spellCheckbox = "PoisonMH_Mindnumbing", reqLevel = 24, type="poison"},
           {spellID = ids.Poisons.DeadlyPoison, spellCheckbox = "PoisonMH_Deadly", reqLevel = 30, type="poison"},
           {spellID = ids.Poisons.WoundPoison, spellCheckbox = "PoisonMH_Wound", reqLevel = 32, type="poison"},
+          {spellID = ids.Poisons.AnestheticPoison, spellCheckbox = "PoisonMH_Anesthetic", reqLevel = 68, type="poison"},
           {spellID = "None", spellCheckbox = "PoisonMH_None", reqLevel = 20, type="none"}
         },
         groupType = "radioButtons"
@@ -147,6 +148,7 @@ function ConROC:RotationChoices()
           {spellID = ids.Poisons.MindnumbingPoison, spellCheckbox = "PoisonOH_Mindnumbing", reqLevel = 24, type="poison"},
           {spellID = ids.Poisons.DeadlyPoison, spellCheckbox = "PoisonOH_Deadly", reqLevel = 30, type="poison"},
           {spellID = ids.Poisons.WoundPoison, spellCheckbox = "PoisonOH_Wound", reqLevel = 32, type="poison"},
+          {spellID = ids.Poisons.AnestheticPoison, spellCheckbox = "PoisonOH_Anesthetic", reqLevel = 68, type="poison"},
           {spellID = "None", spellCheckbox = "PoisonOH_None", reqLevel = 20, type="none"}
         },
         groupType = "radioButtons"

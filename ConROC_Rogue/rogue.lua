@@ -375,7 +375,7 @@ function ConROC.Rogue.Damage(_, timeShift, currentSpell, gcd)
             end
 
             if ConROC:CheckBox(ConROC_SM_PoisonOH_Anesthetic) then
-                if ids.ActivePoison[offHandEnchantId] ~= Poisons.AnestheticPoison.name then
+                if ids.ActivePoison[offHandEnchantId] == Poisons.AnestheticPoison.name then
                     _ohAlpha = .5
                 end
                 _ohP = Poisons.AnestheticPoison

@@ -52,6 +52,7 @@ ids.Poisons = { -- is items not spells
 	InstantPoison = {id = 6947, name = "Instant Poison", enchantID = 323, type = "poison"},
 	MindnumbingPoison = {id = 5237, name = "Mind-numbing", enchantID = 35, type = "poison"},
 	WoundPoison = {id = 10918, name = "Wound Poison", enchantID = 703, type = "poison"},
+	AnestheticPoison = {id = 21835, name = "Anesthetic Poison", enchantID = 2640, type = "poison"},
 	BlindingPowder = {id = 5530, name = "Blinding Powder", enchantID = nil, type = "powder"},
 }
 ids.Rank = {
@@ -62,6 +63,7 @@ ids.Rank = {
 	AmbushRank4 = 11267,
 	AmbushRank5 = 11268,
 	AmbushRank6 = 11269,
+	AmbushRank7 = 27441,
 	AmbushSoDRank1 = 462718,
 	AmbushSoDRank2 = 462719,
 	AmbushSoDRank3 = 462720,
@@ -76,17 +78,21 @@ ids.Rank = {
 	EviscerateRank6 = 8624,
 	EviscerateRank7 = 11299,
 	EviscerateRank8 = 11300,
+	EviscerateRank9 = 26865,
+	EviscerateRank10 = 31016,
 	ExposeArmorRank1 = 8647,
 	ExposeArmorRank2 = 8649,
 	ExposeArmorRank3 = 8650,
 	ExposeArmorRank4 = 11197,
 	ExposeArmorRank5 = 11198,
+	ExposeArmorRank6 = 26866,
 	GarroteRank1 = 703,
 	GarroteRank2 = 8631,
 	GarroteRank3 = 8632,
 	GarroteRank4 = 8633,
 	GarroteRank5 = 11289,
 	GarroteRank6 = 11290,
+	GarroteRank7 = 26884,
 	GarroteSoDRank1 = 462724,
 	GarroteSoDRank2 = 462726,
 	GarroteSoDRank3 = 462727,
@@ -101,6 +107,7 @@ ids.Rank = {
 	RuptureRank4 = 11273,
 	RuptureRank5 = 11274,
 	RuptureRank6 = 11275,
+	RuptureRank7 = 26867,
 	SliceandDiceRank1 = 5171,
 	SliceandDiceRank2 = 6774,
 --Combat
@@ -113,6 +120,7 @@ ids.Rank = {
 	BackstabRank7 = 11280,
 	BackstabRank8 = 11281,
 	BackstabRank9 = 25300,
+	BackstabRank10 = 26863,
 	BackstabSoDRank1 = 462709,
 	BackstabSoDRank2 = 462710,
 	BackstabSoDRank3 = 462711,
@@ -126,15 +134,19 @@ ids.Rank = {
 	FeintRank2 = 6768,
 	FeintRank3 = 8637,
 	FeintRank4 = 11303,
+	FeintRank5 = 25302,
+	FeintRank6 = 27448,
 	GougeRank1 = 1776,
 	GougeRank2 = 1777,
 	GougeRank3 = 8629,
 	GougeRank4 = 11285,
 	GougeRank5 = 11286,
+	GougeRank6 = 38764,
 	KickRank1 = 1766,
 	KickRank2 = 1767,
 	KickRank3 = 1768,
 	KickRank4 = 1769,
+	KickRank5 = 27613,
 	SinisterStrikeRank1 = 1752,
 	SinisterStrikeRank2 = 1757,
 	SinisterStrikeRank3 = 1758,
@@ -143,6 +155,8 @@ ids.Rank = {
 	SinisterStrikeRank6 = 8621,
 	SinisterStrikeRank7 = 11293,
 	SinisterStrikeRank8 = 11294,
+	SinisterStrikeRank9 = 26861,
+	SinisterStrikeRank10 = 26862,
 	SprintRank1 = 2983,
 	SprintRank2 = 8696,
 	SprintRank3 = 11305,
@@ -150,6 +164,7 @@ ids.Rank = {
 	HemorrhageRank1 = 16511,
 	HemorrhageRank2 = 17347,
 	HemorrhageRank3 = 17348,
+	HemorrhageRank4 = 26864,
 	SapRank1 = 6770,
 	SapRank2 = 2070,
 	SapRank3 = 11297,
@@ -167,12 +182,15 @@ ids.Rank = {
 	DeadlyPoisonRank3 = {id = 8984, name = "Deadly Poison III", enchantID = 626, type = "poison"},
 	DeadlyPoisonRank4 = {id = 8985, name = "Deadly Poison IV", enchantID = 627, type = "poison"},
 	DeadlyPoisonRank5 = {id = 20844, name = "Deadly Poison V", enchantID = 2630, type = "poison"},
+	DeadlyPoisonRank6 = {id = 22053, name = "Deadly Poison VI", enchantID = 2642, type = "poison"},
+	DeadlyPoisonRank7 = {id = 22054, name = "Deadly Poison VII", enchantID = 2643, type = "poison"},
 	InstantPoisonRank1 = {id = 6947, name = "Instant Poison", enchantID = 323, type = "poison"},
 	InstantPoisonRank2 = {id = 6949, name = "Instant Poison II", enchantID = 324, type = "poison"},
 	InstantPoisonRank3 = {id = 6950, name = "Instant Poison III", enchantID = 325, type = "poison"},
 	InstantPoisonRank4 = {id = 8926, name = "Instant Poison IV", enchantID = 623, type = "poison"},
 	InstantPoisonRank5 = {id = 8927, name = "Instant Poison V", enchantID = 624, type = "poison"},
 	InstantPoisonRank6 = {id = 8928, name = "Instant Poison VI", enchantID = 625, type = "poison"},
+	InstantPoisonRank7 = {id = 21927, name = "Instant Poison VII", enchantID = 2641, type = "poison"},
 	MindnumbingPoisonRank1 = {id = 5237, name = "Mind-numbing", enchantID = 35, type = "poison"},
 	MindnumbingPoisonRank2 = {id = 6951, name = "Mind-numbing II", enchantID = 23, type = "poison"},
 	MindnumbingPoisonRank3 = {id = 9186, name = "Mind-numbing III", enchantID = 643, type = "poison"},
@@ -180,6 +198,8 @@ ids.Rank = {
 	WoundPoisonRank2 = {id = 10920, name = "Wound Poison II", enchantID = 704, type = "poison"},
 	WoundPoisonRank3 = {id = 10921, name = "Wound Poison III", enchantID = 705, type = "poison"},
 	WoundPoisonRank4 = {id = 10922, name = "Wound Poison IV", enchantID = 706, type = "poison"},
+	WoundPoisonRank5 = {id = 22055, name = "Wound Poison V", enchantID = 3771, type = "poison"},
+	AnestheticPoisonRank1 = {id = 21835, name = "Anesthetic Poison", enchantID = 2640, type = "poison"},
 }
 ids.Assassination_Talent = {
 	ImprovedPoisons = 1,
@@ -285,12 +305,15 @@ ids.ActivePoison = { -- list of EnchantId and Poison name to map against Poisons
 	[626]	=	"Deadly Poison III",
 	[627]	=	"Deadly Poison IV",
 	[2630]	=	"Deadly Poison V",
+	[2642]	=	"Deadly Poison VI",
+	[2643]	=	"Deadly Poison VII",
 	[323]	=	"Instant Poison",
 	[324]	=	"Instant Poison II",
 	[325]	=	"Instant Poison III",
 	[623]	=	"Instant Poison IV",
 	[624]	=	"Instant Poison V",
 	[625]	=	"Instant Poison VI",
+	[2641]	=	"Instant Poison VII",
 	[35]	=	"Mind-numbing Poison",
 	[23]	=	"Mind-numbing Poison II",
 	[643]	=	"Mind-Numbing Poison III",
@@ -298,11 +321,16 @@ ids.ActivePoison = { -- list of EnchantId and Poison name to map against Poisons
 	[704]	=	"Wound Poison II",
 	[705]	=	"Wound Poison III",
 	[706]	=	"Wound Poison IV",
+	[3771]	=	"Wound Poison V",
+	[2640]	=	"Anesthetic Poison",
 }
 
 function ConROC:UpdateSpellID()
 	--Ranks
-	if IsSpellKnown(ids.Rank.AmbushRank6) then
+	if IsSpellKnown(ids.Rank.AmbushRank7) then
+		if ConROC:RuneEquipped(ids.Engrave.Cutthroat, "hands") then ids.Ability.Ambush = ids.Rank.AmbushSoDRank6;
+		else ids.Ability.Ambush = ids.Rank.AmbushRank7; end
+	elseif IsSpellKnown(ids.Rank.AmbushRank6) then
 		if ConROC:RuneEquipped(ids.Engrave.Cutthroat, "hands") then ids.Ability.Ambush = ids.Rank.AmbushSoDRank6;
 		else ids.Ability.Ambush = ids.Rank.AmbushRank6; end
 	elseif IsSpellKnown(ids.Rank.AmbushRank5) then
@@ -321,7 +349,9 @@ function ConROC:UpdateSpellID()
 		if ConROC:RuneEquipped(ids.Engrave.Cutthroat, "hands") then ids.Ability.Ambush = ids.Rank.AmbushSoDRank1; end
 	end
 
-	if IsSpellKnown(ids.Rank.EviscerateRank8) then ids.Ability.Eviscerate = ids.Rank.EviscerateRank8
+	if IsSpellKnown(ids.Rank.EviscerateRank10) then ids.Ability.Eviscerate = ids.Rank.EviscerateRank10
+	elseif IsSpellKnown(ids.Rank.EviscerateRank9) then ids.Ability.Eviscerate = ids.Rank.EviscerateRank9
+	elseif IsSpellKnown(ids.Rank.EviscerateRank8) then ids.Ability.Eviscerate = ids.Rank.EviscerateRank8
 	elseif IsSpellKnown(ids.Rank.EviscerateRank7) then ids.Ability.Eviscerate = ids.Rank.EviscerateRank7
 	elseif IsSpellKnown(ids.Rank.EviscerateRank6) then ids.Ability.Eviscerate = ids.Rank.EviscerateRank6
 	elseif IsSpellKnown(ids.Rank.EviscerateRank5) then ids.Ability.Eviscerate = ids.Rank.EviscerateRank5
@@ -329,12 +359,16 @@ function ConROC:UpdateSpellID()
 	elseif IsSpellKnown(ids.Rank.EviscerateRank3) then ids.Ability.Eviscerate = ids.Rank.EviscerateRank3
 	elseif IsSpellKnown(ids.Rank.EviscerateRank2) then ids.Ability.Eviscerate = ids.Rank.EviscerateRank2 end
 
-	if IsSpellKnown(ids.Rank.ExposeArmorRank5) then ids.Ability.ExposeArmor = ids.Rank.ExposeArmorRank5;
+	if IsSpellKnown(ids.Rank.ExposeArmorRank6) then ids.Ability.ExposeArmor = ids.Rank.ExposeArmorRank6;
+	elseif IsSpellKnown(ids.Rank.ExposeArmorRank5) then ids.Ability.ExposeArmor = ids.Rank.ExposeArmorRank5;
 	elseif IsSpellKnown(ids.Rank.ExposeArmorRank4) then ids.Ability.ExposeArmor = ids.Rank.ExposeArmorRank4;
 	elseif IsSpellKnown(ids.Rank.ExposeArmorRank3) then ids.Ability.ExposeArmor = ids.Rank.ExposeArmorRank3;
 	elseif IsSpellKnown(ids.Rank.ExposeArmorRank2) then ids.Ability.ExposeArmor = ids.Rank.ExposeArmorRank2; end
 
-	if IsSpellKnown(ids.Rank.GarroteRank6) then
+	if IsSpellKnown(ids.Rank.GarroteRank7) then
+		if ConROC:RuneEquipped(ids.Engrave.Cutthroat, "hands") then ids.Ability.Garrote = ids.Rank.GarroteSoDRank6;
+		else ids.Ability.Garrote = ids.Rank.GarroteRank7; end
+	elseif IsSpellKnown(ids.Rank.GarroteRank6) then
 		if ConROC:RuneEquipped(ids.Engrave.Cutthroat, "hands") then ids.Ability.Garrote = ids.Rank.GarroteSoDRank6;
 		else ids.Ability.Garrote = ids.Rank.GarroteRank6; end
 	elseif IsSpellKnown(ids.Rank.GarroteRank5) then
@@ -355,7 +389,8 @@ function ConROC:UpdateSpellID()
 
 	if IsSpellKnown(ids.Rank.KidneyShotRank2) then ids.Ability.KidneyShot = ids.Rank.KidneyShotRank2 end
 
-	if IsSpellKnown(ids.Rank.RuptureRank6) then ids.Ability.Rupture = ids.Rank.RuptureRank6
+	if IsSpellKnown(ids.Rank.RuptureRank7) then ids.Ability.Rupture = ids.Rank.RuptureRank7
+	elseif IsSpellKnown(ids.Rank.RuptureRank6) then ids.Ability.Rupture = ids.Rank.RuptureRank6
 	elseif IsSpellKnown(ids.Rank.RuptureRank5) then ids.Ability.Rupture = ids.Rank.RuptureRank5
 	elseif IsSpellKnown(ids.Rank.RuptureRank4) then ids.Ability.Rupture = ids.Rank.RuptureRank4
 	elseif IsSpellKnown(ids.Rank.RuptureRank3) then ids.Ability.Rupture = ids.Rank.RuptureRank3
@@ -363,48 +398,57 @@ function ConROC:UpdateSpellID()
 
 	if IsSpellKnown(ids.Rank.SliceandDiceRank2) then ids.Ability.SliceandDice = ids.Rank.SliceandDiceRank2 end
 
-	if IsSpellKnown(ids.Rank.BackstabRank9) then
+	if IsSpellKnown(ids.Rank.BackstabRank10) then
+		if ConROC:RuneEquipped(ids.Engrave.Cutthroat, "hands") then ids.Ability.Backstab = ids.Rank.BackstabSoDRank9;
+		else ids.Ability.Backstab = ids.Rank.BackstabRank10; end
+	elseif IsSpellKnown(ids.Rank.BackstabRank9) then
 		if ConROC:RuneEquipped(ids.Engrave.Cutthroat, "hands") then ids.Ability.Backstab = ids.Rank.BackstabSoDRank9;
 		else ids.Ability.Backstab = ids.Rank.BackstabRank9; end
 	elseif IsSpellKnown(ids.Rank.BackstabRank8) then
 		if ConROC:RuneEquipped(ids.Engrave.Cutthroat, "hands") then ids.Ability.Backstab = ids.Rank.BackstabSoDRank8;
-		else ids.Ability.Backstab = ids.Rank.BackstabRank9; end
+		else ids.Ability.Backstab = ids.Rank.BackstabRank8; end
 	elseif IsSpellKnown(ids.Rank.BackstabRank7) then
 		if ConROC:RuneEquipped(ids.Engrave.Cutthroat, "hands") then ids.Ability.Backstab = ids.Rank.BackstabSoDRank7;
-		else ids.Ability.Backstab = ids.Rank.BackstabRank9; end
+		else ids.Ability.Backstab = ids.Rank.BackstabRank7; end
 	elseif IsSpellKnown(ids.Rank.BackstabRank6) then
 		if ConROC:RuneEquipped(ids.Engrave.Cutthroat, "hands") then ids.Ability.Backstab = ids.Rank.BackstabSoDRank6;
-		else ids.Ability.Backstab = ids.Rank.BackstabRank9; end
+		else ids.Ability.Backstab = ids.Rank.BackstabRank6; end
 	elseif IsSpellKnown(ids.Rank.BackstabRank5) then
 		if ConROC:RuneEquipped(ids.Engrave.Cutthroat, "hands") then ids.Ability.Backstab = ids.Rank.BackstabSoDRank5;
-		else ids.Ability.Backstab = ids.Rank.BackstabRank9; end
+		else ids.Ability.Backstab = ids.Rank.BackstabRank5; end
 	elseif IsSpellKnown(ids.Rank.BackstabRank4) then
 		if ConROC:RuneEquipped(ids.Engrave.Cutthroat, "hands") then ids.Ability.Backstab = ids.Rank.BackstabSoDRank4;
-		else ids.Ability.Backstab = ids.Rank.BackstabRank9; end
+		else ids.Ability.Backstab = ids.Rank.BackstabRank4; end
 	elseif IsSpellKnown(ids.Rank.BackstabRank3) then
 		if ConROC:RuneEquipped(ids.Engrave.Cutthroat, "hands") then ids.Ability.Backstab = ids.Rank.BackstabSoDRank3;
-		else ids.Ability.Backstab = ids.Rank.BackstabRank9; end
+		else ids.Ability.Backstab = ids.Rank.BackstabRank3; end
 	elseif IsSpellKnown(ids.Rank.BackstabRank2) then
 		if ConROC:RuneEquipped(ids.Engrave.Cutthroat, "hands") then ids.Ability.Backstab = ids.Rank.BackstabSoDRank2;
-		else ids.Ability.Backstab = ids.Rank.BackstabRank9; end
+		else ids.Ability.Backstab = ids.Rank.BackstabRank2; end
 	elseif IsSpellKnown(ids.Rank.BackstabRank1) then
 		if ConROC:RuneEquipped(ids.Engrave.Cutthroat, "hands") then ids.Ability.Backstab = ids.Rank.BackstabSoDRank1; end
 	end
 
-	if IsSpellKnown(ids.Rank.FeintRank4) then ids.Ability.Feint = ids.Rank.FeintRank4
+	if IsSpellKnown(ids.Rank.FeintRank6) then ids.Ability.Feint = ids.Rank.FeintRank6
+	elseif IsSpellKnown(ids.Rank.FeintRank5) then ids.Ability.Feint = ids.Rank.FeintRank5
+	elseif IsSpellKnown(ids.Rank.FeintRank4) then ids.Ability.Feint = ids.Rank.FeintRank4
 	elseif IsSpellKnown(ids.Rank.FeintRank3) then ids.Ability.Feint = ids.Rank.FeintRank3
 	elseif IsSpellKnown(ids.Rank.FeintRank2) then ids.Ability.Feint = ids.Rank.FeintRank2 end
 
-	if IsSpellKnown(ids.Rank.GougeRank5) then ids.Ability.Gouge = ids.Rank.GougeRank5;
+	if IsSpellKnown(ids.Rank.GougeRank6) then ids.Ability.Gouge = ids.Rank.GougeRank6;
+	elseif IsSpellKnown(ids.Rank.GougeRank5) then ids.Ability.Gouge = ids.Rank.GougeRank5;
 	elseif IsSpellKnown(ids.Rank.GougeRank4) then ids.Ability.Gouge = ids.Rank.GougeRank4;
 	elseif IsSpellKnown(ids.Rank.GougeRank3) then ids.Ability.Gouge = ids.Rank.GougeRank3;
 	elseif IsSpellKnown(ids.Rank.GougeRank2) then ids.Ability.Gouge = ids.Rank.GougeRank2; end
 
-	if IsSpellKnown(ids.Rank.KickRank4) then ids.Ability.Kick = ids.Rank.KickRank4;
+	if IsSpellKnown(ids.Rank.KickRank5) then ids.Ability.Kick = ids.Rank.KickRank5;
+	elseif IsSpellKnown(ids.Rank.KickRank4) then ids.Ability.Kick = ids.Rank.KickRank4;
 	elseif IsSpellKnown(ids.Rank.KickRank3) then ids.Ability.Kick = ids.Rank.KickRank3;
 	elseif IsSpellKnown(ids.Rank.KickRank2) then ids.Ability.Kick = ids.Rank.KickRank2; end
 
-	if IsSpellKnown(ids.Rank.SinisterStrikeRank8) then ids.Ability.SinisterStrike = ids.Rank.SinisterStrikeRank8
+	if IsSpellKnown(ids.Rank.SinisterStrikeRank10) then ids.Ability.SinisterStrike = ids.Rank.SinisterStrikeRank10
+	elseif IsSpellKnown(ids.Rank.SinisterStrikeRank9) then ids.Ability.SinisterStrike = ids.Rank.SinisterStrikeRank9
+	elseif IsSpellKnown(ids.Rank.SinisterStrikeRank8) then ids.Ability.SinisterStrike = ids.Rank.SinisterStrikeRank8
 	elseif IsSpellKnown(ids.Rank.SinisterStrikeRank7) then ids.Ability.SinisterStrike = ids.Rank.SinisterStrikeRank7
 	elseif IsSpellKnown(ids.Rank.SinisterStrikeRank6) then ids.Ability.SinisterStrike = ids.Rank.SinisterStrikeRank6
 	elseif IsSpellKnown(ids.Rank.SinisterStrikeRank5) then ids.Ability.SinisterStrike = ids.Rank.SinisterStrikeRank5
@@ -415,7 +459,8 @@ function ConROC:UpdateSpellID()
 	if IsSpellKnown(ids.Rank.SprintRank3) then ids.Ability.Sprint = ids.Rank.SprintRank3
 	elseif IsSpellKnown(ids.Rank.SprintRank2) then ids.Ability.Sprint = ids.Rank.SprintRank2 end
 
-	if IsSpellKnown(ids.Rank.HemorrhageRank3) then ids.Ability.Hemorrhage = ids.Rank.HemorrhageRank3
+	if IsSpellKnown(ids.Rank.HemorrhageRank4) then ids.Ability.Hemorrhage = ids.Rank.HemorrhageRank4
+	elseif IsSpellKnown(ids.Rank.HemorrhageRank3) then ids.Ability.Hemorrhage = ids.Rank.HemorrhageRank3
 	elseif IsSpellKnown(ids.Rank.HemorrhageRank2) then ids.Ability.Hemorrhage = ids.Rank.HemorrhageRank2 end
 
 	if IsSpellKnown(ids.Rank.SapRank3) then ids.Ability.Sap = ids.Rank.SapRank3
@@ -430,11 +475,15 @@ function ConROC:UpdateSpellID()
 	local _Player_Level = UnitLevel("player");
 	if _Player_Level >= 50 then ids.Poisons.CripplingPoison = ids.Rank.CripplingPoisonRank2; end
 
-	if _Player_Level >= 54 then ids.Poisons.DeadlyPoison = ids.Rank.DeadlyPoisonRank4;
+	if _Player_Level >= 70 then ids.Poisons.DeadlyPoison = ids.Rank.DeadlyPoisonRank7;
+	elseif _Player_Level >= 62 then ids.Poisons.DeadlyPoison = ids.Rank.DeadlyPoisonRank6;
+	elseif _Player_Level >= 60 then ids.Poisons.DeadlyPoison = ids.Rank.DeadlyPoisonRank5;
+	elseif _Player_Level >= 54 then ids.Poisons.DeadlyPoison = ids.Rank.DeadlyPoisonRank4;
 	elseif _Player_Level >= 46 then ids.Poisons.DeadlyPoison = ids.Rank.DeadlyPoisonRank3;
 	elseif _Player_Level >= 38 then ids.Poisons.DeadlyPoison = ids.Rank.DeadlyPoisonRank2; end
 
-	if _Player_Level >= 60 then ids.Poisons.InstantPoison = ids.Rank.InstantPoisonRank6;
+	if _Player_Level >= 68 then ids.Poisons.InstantPoison = ids.Rank.InstantPoisonRank7;
+	elseif _Player_Level >= 60 then ids.Poisons.InstantPoison = ids.Rank.InstantPoisonRank6;
 	elseif _Player_Level >= 52 then ids.Poisons.InstantPoison = ids.Rank.InstantPoisonRank5;
 	elseif _Player_Level >= 44 then ids.Poisons.InstantPoison = ids.Rank.InstantPoisonRank4;
 	elseif _Player_Level >= 36 then ids.Poisons.InstantPoison = ids.Rank.InstantPoisonRank3;
@@ -443,7 +492,10 @@ function ConROC:UpdateSpellID()
 	if _Player_Level >= 52 then ids.Poisons.MindnumbingPoison = ids.Rank.MindnumbingPoisonRank3;
 	elseif _Player_Level >= 38 then ids.Poisons.MindnumbingPoison = ids.Rank.MindnumbingPoisonRank2; end
 
-	if _Player_Level >= 56 then ids.Poisons.WoundPoison = ids.Rank.WoundPoisonRank4;
+	if _Player_Level >= 68 then ids.Poisons.WoundPoison = ids.Rank.WoundPoisonRank5;
+	elseif _Player_Level >= 56 then ids.Poisons.WoundPoison = ids.Rank.WoundPoisonRank4;
 	elseif _Player_Level >= 48 then ids.Poisons.WoundPoison = ids.Rank.WoundPoisonRank3;
 	elseif _Player_Level >= 40 then ids.Poisons.WoundPoison = ids.Rank.WoundPoisonRank2; end
+
+	if _Player_Level >= 68 then ids.Poisons.AnestheticPoison = ids.Rank.AnestheticPoisonRank1; end
 end
