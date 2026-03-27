@@ -2013,7 +2013,7 @@ function ConROC:FetchDef()
 end
 
 function ConROC:FetchBlizzard()
-	local ActionBarsBlizzard = {'Action', 'MultiBarBottomLeft', 'MultiBarBottomRight', 'MultiBarRight', 'MultiBarLeft', 'Stance', 'PetAction'};
+	local ActionBarsBlizzard = {'Action', 'MultiBarBottomLeft', 'MultiBarBottomRight', 'MultiBarRight', 'MultiBarLeft', 'MultiBar5', 'MultiBar6', 'MultiBar7', 'Stance', 'PetAction'};
 	for _, barName in pairs(ActionBarsBlizzard) do
 		if barName == 'Stance' then
 			local x = GetNumShapeshiftForms();
@@ -2041,7 +2041,7 @@ function ConROC:FetchBlizzard()
 end
 
 function ConROC:DefFetchBlizzard()
-	local ActionBarsBlizzard = {'Action', 'MultiBarBottomLeft', 'MultiBarBottomRight', 'MultiBarRight', 'MultiBarLeft', 'Stance', 'PetAction'};
+	local ActionBarsBlizzard = {'Action', 'MultiBarBottomLeft', 'MultiBarBottomRight', 'MultiBarRight', 'MultiBarLeft', 'MultiBar5', 'MultiBar6', 'MultiBar7', 'Stance', 'PetAction'};
 	for _, barName in pairs(ActionBarsBlizzard) do
 		if barName == 'Stance' then
 			local x = GetNumShapeshiftForms();

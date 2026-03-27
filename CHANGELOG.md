@@ -6,6 +6,14 @@ This project began as a fork of [ConROC by Vae2009](https://github.com/Vae2009/C
 
 ---
 
+## [2.8.1] – Blizzard Action Bar 8-10 Detection Fix
+
+### Fixed
+
+- **Spells on Blizzard action bars 8, 9, and 10 not detected** – `FetchBlizzard()` and `DefFetchBlizzard()` only scanned the first five standard bars (Action, MultiBarBottomLeft, MultiBarBottomRight, MultiBarRight, MultiBarLeft) plus Stance and PetAction. The three additional Blizzard multi-action bars (`MultiBar5`, `MultiBar6`, `MultiBar7`) were never scanned, causing a "Spell not found on action bars" error for any spell placed on bars 8–10. Added all three bars to both fetch functions. Affects all classes using the default Blizzard UI.
+
+---
+
 ## [2.8.0] – Rogue Module Overhaul
 
 ### Fixed
