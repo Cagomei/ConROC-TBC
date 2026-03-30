@@ -1,4 +1,4 @@
-ConROC.Druid = {};
+﻿ConROC.Druid = {};
 
 local ConROC_Druid, ids = ...;
 
@@ -26,7 +26,7 @@ function ConROC:UNIT_SPELLCAST_SUCCEEDED(event, unitID, lineID, spellID)
     end
 end
 
-local Racial, Spec, Ability, Rank, Bal_Talent, Feral_Talent, Resto_Talent, Engrave, Runes, Buff, Debuff = ids.Racial, ids.Spec, ids.Ability, ids.Rank, ids.Balance_Talent, ids.FeralCombat_Talent, ids.Restoration_Talent, ids.Engrave, ids.Runes, ids.Buff, ids.Debuff;
+local Racial, Spec, Ability, Rank, Bal_Talent, Feral_Talent, Resto_Talent, Buff, Debuff = ids.Racial, ids.Spec, ids.Ability, ids.Rank, ids.Balance_Talent, ids.FeralCombat_Talent, ids.Restoration_Talent, ids.Buff, ids.Debuff;
 
 --Info
 local _Player_Spec, _Player_Spec_ID = ConROC:currentSpec();
@@ -144,26 +144,16 @@ function ConROC.Druid.Damage(_, timeShift, currentSpell, gcd)
 
     local _ClearCasting_BUFF = ConROC:Aura(Buff.ClearCasting, timeShift);
 
---Runes
-    local _Berserk, _Berserk_RDY = ConROC:AbilityReady(Runes.Berserk, timeShift);
-        local _Berserk_BUFF = ConROC:Aura(_Berserk, timeShift);
-    local _Lacerate, _Lacerate_RDY = ConROC:AbilityReady(Runes.Lacerate, timeShift);
+--TBC Abilities
+    local _DemoralizingRoar, _DemoralizingRoar_RDY = ConROC:AbilityReady(Ability.DemoralizingRoar, timeShift);
+        local _DemoralizingRoar_DEBUFF = ConROC:TargetAura(_DemoralizingRoar, timeShift);
+    local _Lacerate, _Lacerate_RDY = ConROC:AbilityReady(Ability.Lacerate, timeShift);
         local _, _Lacerate_COUNT, _Lacerate_DUR = ConROC:TargetAura(_Lacerate, timeShift);
-    local _MangleBear, _MangleBear_RDY = ConROC:AbilityReady(Runes.MangleBear, timeShift);
+    local _MangleBear, _MangleBear_RDY = ConROC:AbilityReady(Ability.MangleBear, timeShift);
         local _MangleBear_DEBUFF, _, _MangleBear_DUR = ConROC:TargetAura(_MangleBear, timeShift);
-    local _MangleCat, _MangleCat_RDY = ConROC:AbilityReady(Runes.MangleCat, timeShift);
+    local _MangleCat, _MangleCat_RDY = ConROC:AbilityReady(Ability.MangleCat, timeShift);
         local _, _, _MangleCat_DUR = ConROC:TargetAura(_MangleCat, timeShift);
-    local _SavageRoar, _SavageRoar_RDY = ConROC:AbilityReady(Runes.SavageRoar, timeShift);
-        local _SavageRoar_BUFF, _, _SavageRoar_DUR = ConROC:Aura(_SavageRoar, timeShift);
-    local _SkullBash, _SkullBash_RDY = ConROC:AbilityReady(Runes.SkullBash, timeShift);
-    local _StarSurge, _StarSurge_RDY = ConROC:AbilityReady(Runes.StarSurge, timeShift);
-        local _, _EclipseLunar_COUNT = ConROC:Aura(Buff.EclipseLunar, timeShift);
-        local _, _EclipseSolar_COUNT = ConROC:Aura(Buff.EclipseSolar, timeShift);
-    local _Starfall, _Starfall_RDY = ConROC:AbilityReady(Runes.Starfall, timeShift);
-        local _Starfall_BUFF = ConROC:Aura(_Starfall, timeShift);
-    local _Sunfire, _Sunfire_RDY = ConROC:AbilityReady(Runes.Sunfire, timeShift);
-        local _Sunfire_DEBUFF = ConROC:TargetAura(_Sunfire, timeShift);
-    local _SwipeCF, _SwipeCF_RDY = ConROC:AbilityReady(Runes.SwipeCF, timeShift);
+    local _ForceofNature, _ForceofNature_RDY = ConROC:AbilityReady(Ability.ForceofNature, timeShift);
 
 --Conditions
     local _is_stealthed = IsStealthed();
@@ -172,36 +162,22 @@ function ConROC.Druid.Damage(_, timeShift, currentSpell, gcd)
     local _Swipe_COST = 20;
     local _Lacerate_COST = 10;
 
-    local _CatForm_COST = manaBase * (.55 * (1.0 - (.1 * select(2, ConROC:TalentChosen(Spec.Balance, Bal_Talent.NaturalShapeshifter)))))
+    local _CatForm_COST = manaBase * (.55 * (1.0 - (.1 * select(2, ConROC:TalentChosen(Spec.Restoration, Resto_Talent.NaturalShapeshifter)))))
     local _Rake_COST = 40;
     local _Claw_COST = 45;
     local _Shred_COST = 60;
 
     if ConROC:TalentChosen(Spec.Feral, Feral_Talent.Ferocity) then
-        ferocityBonus = select(2, ConROC:TalentChosen(Spec.Feral, Feral_Talent.Ferocity));
-
+        local ferocityBonus = select(2, ConROC:TalentChosen(Spec.Feral, Feral_Talent.Ferocity));
         _Maul_COST = _Maul_COST - ferocityBonus;
         _Swipe_COST = _Swipe_COST - ferocityBonus;
         _Rake_COST = _Rake_COST - ferocityBonus;
         _Claw_COST = _Claw_COST - ferocityBonus;
     end
 
-    if _Berserk_BUFF then
-        _Lacerate_COST = 0;
-    end
-
-    if ConROC:TalentChosen(Spec.Feral, Feral_Talent.ImprovedShred) then
-        shredBonus = select(2, ConROC:TalentChosen(Spec.Feral, Feral_Talent.ImprovedShred));
-
-        _Shred_COST = _Shred_COST - (shredBonus * 6);
-    end
-
-    if currentSpell == _Starfire then
-        _EclipseLunar_COUNT = _EclipseLunar_COUNT - 1;
-        _EclipseSolar_COUNT = _EclipseSolar_COUNT + 2;
-    elseif currentSpell == _Wrath then
-        _EclipseSolar_COUNT = _EclipseSolar_COUNT - 1;
-        _EclipseLunar_COUNT = _EclipseLunar_COUNT + 1;
+    if ConROC:TalentChosen(Spec.Feral, Feral_Talent.ShreddingAttacks) then
+        local shreddingRank = select(2, ConROC:TalentChosen(Spec.Feral, Feral_Talent.ShreddingAttacks));
+        _Shred_COST = math.floor(_Shred_COST * (1 - shreddingRank * 0.18));
     end
 
     ConROCPowerShift:Hide();
@@ -210,333 +186,11 @@ function ConROC.Druid.Damage(_, timeShift, currentSpell, gcd)
 
 --Indicators
     ConROC:AbilityRaidBuffs(_MarkoftheWild, _MarkoftheWild_RDY and not _MarkoftheWild_BUFF);
-    ConROC:AbilityInterrupt(_SkullBash, ConROC:Interrupt() and _SkullBash_RDY)
 	ConROC:AbilityTaunt(_Maul, _BearForm_FORM and _Maul_RDY and _Rage >= 30);
 
 --Rotations
     repeat
         while(true) do
-            if ConROC.Seasons.IsSoD then
-                if _is_stealthed and _CatForm_FORM then
-                    if _TigersFury_RDY and not _TigersFury_BUFF and _Energy >= 30 then
-                        tinsert(ConROC.SuggestedSpells, _TigersFury);
-                        _TigersFury_RDY = false;
-                        _TigersFury_BUFF = true;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _Ravage_RDY and _Energy >= 60 and _Combo < _Combo_Max and not ConROC:TarYou() then
-                        tinsert(ConROC.SuggestedSpells, _Ravage);
-                        _is_stealthed = false;
-                        _Energy = _Energy - 60;
-                        _Combo = _Combo + 1;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _Shred_RDY and _Energy >= 60 and _Combo < _Combo_Max and not ConROC:TarYou() then
-                        tinsert(ConROC.SuggestedSpells, _Shred);
-                        _is_stealthed = false;
-                        _Energy = _Energy - 60;
-                        _Combo = _Combo + 1;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-                end
-
-                if _CatForm_FORM then
-                    if ConROC:TalentChosen(Spec.Restoration, Resto_Talent.Furor) and _CatForm_COST <= _Mana and _Energy <= 8 then
-                            ConROCPowerShift:Show();
-                    end
-
-                    if _TigersFury_RDY and not _TigersFury_BUFF and _Energy >= 80 and not _in_combat then
-                        tinsert(ConROC.SuggestedSpells, _TigersFury);
-                        _TigersFury_RDY = false;
-                        _TigersFury_BUFF = true;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if ConROC:CheckBox(ConROC_SM_Debuff_FaerieFireFeral) and _FaerieFireFeral_RDY and not (_FaerieFire_DEBUFF or _FaerieFireFeral_DEBUFF) and ConROC:CheckBox(ConROC_SM_Debuff_FaerieFireFeral) then
-                        tinsert(ConROC.SuggestedSpells, _FaerieFireFeral);
-                        _FaerieFireFeral_DEBUFF = true;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _Shred_RDY and _Combo < _Combo_Max and _ClearCasting_BUFF and not ConROC:TarYou() then
-                        tinsert(ConROC.SuggestedSpells, _Shred);
-                        _Combo = _Combo + 1;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _MangleCat_RDY and _Combo < 1 and _MangleCat_DUR <= 1.2 then
-                        tinsert(ConROC.SuggestedSpells, _MangleCat);
-                        _MangleCat_RDY = false;
-                        _MangleCat_DUR = 60;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _SavageRoar_RDY and _Combo > 1 and (not _SavageRoar_BUFF or _SavageRoar_DUR < 2) then
-                        tinsert(ConROC.SuggestedSpells, _SavageRoar);
-                        _SavageRoar_BUFF = true;
-                        _SavageRoar_DUR = 34;
-                        _Combo = 0;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _MangleCat_RDY and _Combo ~= _Combo_Max and _MangleCat_DUR <= 1.2 then
-                        tinsert(ConROC.SuggestedSpells, _MangleCat);
-                        _MangleCat_RDY = false;
-                        _MangleCat_DUR = 60;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if ConROC:CheckBox(ConROC_SM_DoT_Rip) and _Rip_RDY and not _Rip_DEBUFF and _SavageRoar_BUFF and _Combo == _Combo_Max then --and not (ConROC:CreatureType("Undead") or ConROC:CreatureType("Mechanical") or ConROC:CreatureType("Elemental")) then
-                        tinsert(ConROC.SuggestedSpells, _Rip);
-                        _Rip_DEBUFF = true;
-                        _Combo = 0;
-                        _Queue = _Queue + 1;
-                        break;
-                    end --Not good output unless player wants chosen in SpellMenu
-
-                --   if _FerociousBite_RDY and _Combo == _Combo_Max then
-                --        if ConROC:TalentChosen(Spec.Restoration, Resto_Talent.Furor) and _CatForm_COST <= _Mana and _Energy - 35 <= 8 then
-                --            ConROCPowerShift:Show();
-                --        end
-                --        tinsert(ConROC.SuggestedSpells, _FerociousBite);
-                --        _Combo = 0;
-                --        _Queue = _Queue + 1;
-                --        break;
-                --    end
-
-                    if ConROC:CheckBox(ConROC_SM_DoT_Rake) and _Rake_RDY and not _Rake_DEBUFF and not (ConROC:CreatureType("Undead") or ConROC:CreatureType("Mechanical") or ConROC:CreatureType("Elemental")) then
-                        tinsert(ConROC.SuggestedSpells, _Rake);
-                        _Rake_DEBUFF = true;
-                        _Combo = _Combo + 1;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _MangleCat_RDY then
-                        tinsert(ConROC.SuggestedSpells, _MangleCat);
-                        _MangleCat_RDY = false;
-                        _MangleCat_DUR = 60;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if not IsSpellKnownOrOverridesKnown(_MangleCat) then
-                        if _Claw_RDY and _Combo < _Combo_Max and (not IsSpellKnown(_Shred) or ConROC:TarYou()) then
-                            tinsert(ConROC.SuggestedSpells, _Claw);
-                            _Combo = _Combo + 1;
-                            _Queue = _Queue + 1;
-                            break;
-                        end
-                    end
-                elseif _BearForm_FORM then
-                    if ConROC:CheckBox(ConROC_SM_CD_Enrage) and _Enrage_RDY then
-                        tinsert(ConROC.SuggestedSpells, _Enrage);
-                        _Enrage_RDY = false;
-                        _Rage = _Rage + 20;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if ConROC:CheckBox(ConROC_SM_CD_Berserk) and _Berserk_RDY and not _Berserk_BUFF then
-                        tinsert(ConROC.SuggestedSpells, _Berserk);
-                        _Berserk_RDY = false;
-                        _Berserk_BUFF = true;
-                        _Rage = _Rage - 15;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if ConROC:CheckBox(ConROC_SM_Debuff_FaerieFireFeral) and _FaerieFireFeral_RDY and not (_FaerieFire_DEBUFF or _FaerieFireFeral_DEBUFF) and ConROC:CheckBox(ConROC_SM_Debuff_FaerieFireFeral) then
-                        tinsert(ConROC.SuggestedSpells, _FaerieFireFeral);
-                        _FaerieFireFeral_DEBUFF = true;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _Swipe_RDY and _Rage >= 20 and _enemies_in_melee >= 3 then
-                        tinsert(ConROC.SuggestedSpells, _Swipe);
-                        _Rage = _Rage - 20;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _Lacerate_RDY and _Rage >= _Lacerate_COST and _Lacerate_COUNT == 5 and _Lacerate_DUR <=1.5 then
-                        tinsert(ConROC.SuggestedSpells, _Lacerate);
-                        _Lacerate_COUNT = _Lacerate_COUNT + 1;
-                        _Lacerate_DUR = 15;
-                        _Rage = _Rage - _Lacerate_COST;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _MangleBear_RDY and _Rage >= 15 and not _MangleBear_DEBUFF and _MangleBear_DUR <= 1.2 then
-                        tinsert(ConROC.SuggestedSpells, _MangleBear);
-                        _MangleBear_RDY = false;
-                        _MangleBear_DEBUFF = true;
-                        _MangleBear_DUR = 60;
-                        _Rage = _Rage - 15;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _Lacerate_RDY and _Rage >= _Lacerate_COST and (_Lacerate_COUNT < 5 and _Lacerate_DUR <= 8) and _Rage >= 15 then
-                        tinsert(ConROC.SuggestedSpells, _Lacerate);
-                        _Lacerate_COUNT = _Lacerate_COUNT + 1;
-                        _Lacerate_DUR = 15;
-                        _Rage = _Rage - _Lacerate_COST;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _Maul_RDY and _Rage > 15 and not (_Rage >= 60 or _enemies_in_melee >= 2) then
-                        tinsert(ConROC.SuggestedSpells, _Maul);
-                        _Maul_RDY = false;
-                        _Rage = _Rage - 15;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-                elseif _MoonkinForm_FORM or ConROC:RuneEquipped(Engrave.Eclipse, "waist") then
-                    if not _in_combat then
-                        if _Wrath_RDY and currentSpell ~= _Wrath then
-                            tinsert(ConROC.SuggestedSpells, _Wrath);
-                            _Wrath_RDY = false;
-                            _EclipseSolar_COUNT = _EclipseSolar_COUNT - 1;
-                            _EclipseLunar_COUNT = _EclipseLunar_COUNT + 1;
-                            _Queue = _Queue + 1;
-                            break;
-                        end
-
-                        if _StarSurge_RDY then
-                            tinsert(ConROC.SuggestedSpells, _StarSurge);
-                            _StarSurge_RDY = false;
-                            _EclipseLunar_COUNT = _EclipseLunar_COUNT + 1;
-                            _EclipseSolar_COUNT = _EclipseSolar_COUNT + 2;
-                            _Queue = _Queue + 1;
-                            break;
-                        end
-                    end
-
-                    if ConROC:CheckBox(ConROC_SM_CD_Starfall) and _Starfall_RDY and not _Starfall_BUFF then
-                        tinsert(ConROC.SuggestedSpells, _Starfall);
-                        _Starfall_RDY = false;
-                        _Starfall_BUFF = true;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _Hurricane_RDY and (ConROC_AoEButton:IsVisible() or _enemies_in_30yrds >= 6) then
-                        tinsert(ConROC.SuggestedSpells, _Hurricane);
-                        _Hurricane_RDY = false;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if ConROC:CheckBox(ConROC_SM_DoT_Sunfire) and _Sunfire_RDY and not _Sunfire_DEBUFF then
-                        tinsert(ConROC.SuggestedSpells, _Sunfire);
-                        _Sunfire_DEBUFF = true;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if ConROC:CheckBox(ConROC_SM_DoT_Moonfire) and _Moonfire_RDY and not _Moonfire_DEBUFF then
-                        tinsert(ConROC.SuggestedSpells, _Moonfire);
-                        _Moonfire_DEBUFF = true;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _StarSurge_RDY and _EclipseLunar_COUNT <= 3 then
-                        tinsert(ConROC.SuggestedSpells, _StarSurge);
-                        _StarSurge_RDY = false;
-                        _EclipseLunar_COUNT = _EclipseLunar_COUNT + 1;
-                        _EclipseSolar_COUNT = _EclipseSolar_COUNT + 2;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _Starfire_RDY and _EclipseLunar_COUNT >= 1 then
-                        tinsert(ConROC.SuggestedSpells, _Starfire);
-                        _EclipseLunar_COUNT = _EclipseLunar_COUNT - 1;
-                        _EclipseSolar_COUNT = _EclipseSolar_COUNT + 2;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if ConROC:CheckBox(ConROC_SM_Debuff_FaerieFire) and _FaerieFire_RDY and not (_FaerieFire_DEBUFF or _FaerieFireFeral_DEBUFF) then
-                        tinsert(ConROC.SuggestedSpells, _FaerieFire);
-                        _FaerieFire_DEBUFF = true;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if ConROC:CheckBox(ConROC_SM_DoT_InsectSwarm) and _InsectSwarm_RDY and not _InsectSwarm_DEBUFF then
-                        tinsert(ConROC.SuggestedSpells, _InsectSwarm);
-                        _InsectSwarm_DEBUFF = true;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _Wrath_RDY then
-                        tinsert(ConROC.SuggestedSpells, _Wrath);
-                        _EclipseSolar_COUNT = _EclipseSolar_COUNT - 1;
-                        _EclipseLunar_COUNT = _EclipseLunar_COUNT + 1;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-                elseif not ConROC:CheckBox(ConROC_SM_Role_Healer) or (_is_Enemy and ConROC:CheckBox(ConROC_SM_Role_Healer)) then
-                    if ConROC:CheckBox(ConROC_SM_DoT_Sunfire) and _Sunfire_RDY and not _Sunfire_DEBUFF then
-                        tinsert(ConROC.SuggestedSpells, _Sunfire);
-                        _Sunfire_DEBUFF = true;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if ConROC:CheckBox(ConROC_SM_DoT_Moonfire) and _Moonfire_RDY and not _Moonfire_DEBUFF then
-                        tinsert(ConROC.SuggestedSpells, _Moonfire);
-                        _Moonfire_DEBUFF = true;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _StarSurge_RDY then
-                        tinsert(ConROC.SuggestedSpells, _StarSurge);
-                        _StarSurge_RDY = false;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if ConROC:CheckBox(ConROC_SM_Debuff_FaerieFire) and _FaerieFire_RDY and not (_FaerieFire_DEBUFF or _FaerieFireFeral_DEBUFF) then
-                        tinsert(ConROC.SuggestedSpells, _FaerieFire);
-                        _FaerieFire_DEBUFF = true;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if ConROC:CheckBox(ConROC_SM_DoT_InsectSwarm) and _InsectSwarm_RDY and not _InsectSwarm_DEBUFF then
-                        tinsert(ConROC.SuggestedSpells, _InsectSwarm);
-                        _InsectSwarm_DEBUFF = true;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _Wrath_RDY then
-                        tinsert(ConROC.SuggestedSpells, _Wrath);
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-                end
-            else --not SoD
                 if _is_stealthed and _CatForm_FORM then
                     if _TigersFury_RDY and not _TigersFury_BUFF and _Energy >= 30 then
                         tinsert(ConROC.SuggestedSpells, _TigersFury);
@@ -566,14 +220,20 @@ function ConROC.Druid.Damage(_, timeShift, currentSpell, gcd)
 					end
 
                 if _CatForm_FORM then
-                    if _FaerieFireFeral_RDY and not (_FaerieFire_DEBUFF or _FaerieFireFeral_DEBUFF) then
+                    if ConROC:TalentChosen(Spec.Restoration, Resto_Talent.Furor) and _CatForm_COST <= _Mana and _Energy <= 8 then
+                        ConROCPowerShift:Show();
+                    end
+
+                    -- Debuff: Faerie Fire (Feral)
+                    if ConROC:CheckBox(ConROC_SM_Debuff_FaerieFireFeral) and _FaerieFireFeral_RDY and not (_FaerieFire_DEBUFF or _FaerieFireFeral_DEBUFF) then
                         tinsert(ConROC.SuggestedSpells, _FaerieFireFeral);
                         _FaerieFireFeral_DEBUFF = true;
                         _Queue = _Queue + 1;
                         break;
                     end
 
-                    if _TigersFury_RDY and not _TigersFury_BUFF and _Energy >= 80 then
+                    -- Tiger's Fury: use when energy is high (free damage bonus, no cost in TBC)
+                    if _TigersFury_RDY and not _TigersFury_BUFF then
                         tinsert(ConROC.SuggestedSpells, _TigersFury);
                         _TigersFury_RDY = false;
                         _TigersFury_BUFF = true;
@@ -581,22 +241,27 @@ function ConROC.Druid.Damage(_, timeShift, currentSpell, gcd)
                         break;
                     end
 
-                    if _Rip_RDY and not _Rip_DEBUFF and _Combo >= 5 and ConROC:CheckBox(ConROC_SM_DoT_Rip) and not (ConROC:CreatureType("Undead") or ConROC:CreatureType("Mechanical") or ConROC:CreatureType("Elemental")) then
+                    -- Mangle (Cat): maintain debuff for bleed bonus (60s)
+                    if _MangleCat_RDY and _MangleCat_DUR <= 1.5 then
+                        tinsert(ConROC.SuggestedSpells, _MangleCat);
+                        _MangleCat_RDY = false;
+                        _MangleCat_DUR = 60;
+                        _Combo = _Combo + 1;
+                        _Queue = _Queue + 1;
+                        break;
+                    end
+
+                    -- Rip: 5cp finisher (best finisher when target will live long enough)
+                    if ConROC:CheckBox(ConROC_SM_DoT_Rip) and _Rip_RDY and not _Rip_DEBUFF and _Combo >= 5 and not (ConROC:CreatureType("Undead") or ConROC:CreatureType("Mechanical") or ConROC:CreatureType("Elemental")) then
                         tinsert(ConROC.SuggestedSpells, _Rip);
                         _Rip_DEBUFF = true;
                         _Combo = 0;
                         _Queue = _Queue + 1;
                         break;
-                    end --Not good output unless player wants chosen in SpellMenu
+                    end
 
-if _Rip_RDY and _Combo >= 5 and not _Rip_DEBUFF and ConROC:CheckBox(ConROC_SM_DoT_Rip) and not (ConROC:CreatureType("Undead") or ConROC:CreatureType("Mechanical") or ConROC:CreatureType("Elemental")) then
-    tinsert(ConROC.SuggestedSpells, _Rip);
-    _Combo = 0;
-    _Queue = _Queue + 1;
-    break;
-end
-
-if _FerociousBite_RDY and _Combo >= 5 then
+                    -- Ferocious Bite: 5cp dump finisher (when Rip is up or not using Rip)
+                    if _FerociousBite_RDY and _Combo >= 5 then
                         if ConROC:TalentChosen(Spec.Restoration, Resto_Talent.Furor) and _CatForm_COST <= _Mana and _Energy - 35 <= 8 then
                             ConROCPowerShift:Show();
                         end
@@ -606,7 +271,8 @@ if _FerociousBite_RDY and _Combo >= 5 then
                         break;
                     end
 
-						if ConROC:CheckBox(ConROC_SM_DoT_Rake) and _Rake_RDY and _Energy >= _Rake_COST and not _Rake_DEBUFF and not (ConROC:CreatureType("Undead") or ConROC:CreatureType("Mechanical") or ConROC:CreatureType("Elemental")) then
+                    -- Rake: apply bleed DoT
+                    if ConROC:CheckBox(ConROC_SM_DoT_Rake) and _Rake_RDY and _Energy >= _Rake_COST and not _Rake_DEBUFF and not (ConROC:CreatureType("Undead") or ConROC:CreatureType("Mechanical") or ConROC:CreatureType("Elemental")) then
                         if ConROC:TalentChosen(Spec.Restoration, Resto_Talent.Furor) and _CatForm_COST <= _Mana and _Energy - _Rake_COST <= 8 then
                             ConROCPowerShift:Show();
                         end
@@ -617,18 +283,29 @@ if _FerociousBite_RDY and _Combo >= 5 then
                         break;
                     end
 
---						if _Shred_RDY and _Energy >= _Shred_COST and _Combo < _Combo_Max and not ConROC:TarYou() then
---                        if ConROC:TalentChosen(Spec.Restoration, Resto_Talent.Furor) and _CatForm_COST <= _Mana and _Energy - _Shred_COST <= 8 then
---                            ConROCPowerShift:Show();
---                        end
---                        tinsert(ConROC.SuggestedSpells, _Shred);
---                        _Energy = _Energy - 60;
---                        _Combo = _Combo + 1;
---                        _Queue = _Queue + 1;
---                        break;
---                    end
+                    -- Shred: primary combo builder from behind
+                    if _Shred_RDY and _Energy >= _Shred_COST and _Combo < _Combo_Max and not ConROC:TarYou() then
+                        if ConROC:TalentChosen(Spec.Restoration, Resto_Talent.Furor) and _CatForm_COST <= _Mana and _Energy - _Shred_COST <= 8 then
+                            ConROCPowerShift:Show();
+                        end
+                        tinsert(ConROC.SuggestedSpells, _Shred);
+                        _Energy = _Energy - _Shred_COST;
+                        _Combo = _Combo + 1;
+                        _Queue = _Queue + 1;
+                        break;
+                    end
 
-						if _Claw_RDY and _Energy >= _Claw_COST and _Combo < _Combo_Max and (not IsSpellKnown(_Shred) or ConROC:TarYou()) then
+                    -- Mangle (Cat): combo builder when Shred unavailable
+                    if _MangleCat_RDY and _Combo < _Combo_Max then
+                        tinsert(ConROC.SuggestedSpells, _MangleCat);
+                        _MangleCat_RDY = false;
+                        _Combo = _Combo + 1;
+                        _Queue = _Queue + 1;
+                        break;
+                    end
+
+                    -- Claw: fallback combo builder (no Mangle talented)
+                    if _Claw_RDY and _Energy >= _Claw_COST and _Combo < _Combo_Max and (not IsSpellKnownOrOverridesKnown(_MangleCat) or ConROC:TarYou()) then
                         if ConROC:TalentChosen(Spec.Restoration, Resto_Talent.Furor) and _CatForm_COST <= _Mana and _Energy - _Claw_COST <= 8 then
                             ConROCPowerShift:Show();
                         end
@@ -638,77 +315,127 @@ if _FerociousBite_RDY and _Combo >= 5 then
                         break;
                     end
                 elseif _BearForm_FORM then
-                    if _FaerieFireFeral_RDY and not (_FaerieFire_DEBUFF or _FaerieFireFeral_DEBUFF) then
+                    -- Enrage: free rage generation CD
+                    if ConROC:CheckBox(ConROC_SM_CD_Enrage) and _Enrage_RDY then
+                        tinsert(ConROC.SuggestedSpells, _Enrage);
+                        _Enrage_RDY = false;
+                        _Rage = _Rage + 20;
+                        _Queue = _Queue + 1;
+                        break;
+                    end
+
+                    -- Faerie Fire (Feral): armor debuff
+                    if ConROC:CheckBox(ConROC_SM_Debuff_FaerieFireFeral) and _FaerieFireFeral_RDY and not (_FaerieFire_DEBUFF or _FaerieFireFeral_DEBUFF) then
                         tinsert(ConROC.SuggestedSpells, _FaerieFireFeral);
                         _FaerieFireFeral_DEBUFF = true;
                         _Queue = _Queue + 1;
                         break;
                     end
 
-					if _Swipe_RDY and _Rage >= 20 and (_Rage >= 60 or _enemies_in_melee >= 2) then	
-                        tinsert(ConROC.SuggestedSpells, _Swipe);
-                        _Rage = _Rage - 20;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _Maul_RDY and _Rage > 15 then
-                        tinsert(ConROC.SuggestedSpells, _Maul);
-                        _Maul_RDY = false;
+                    -- Mangle (Bear): high threat, maintain debuff (increases bleed damage)
+                    if _MangleBear_RDY and _Rage >= 15 and _MangleBear_DUR <= 1.5 then
+                        tinsert(ConROC.SuggestedSpells, _MangleBear);
+                        _MangleBear_RDY = false;
+                        _MangleBear_DEBUFF = true;
+                        _MangleBear_DUR = 60;
                         _Rage = _Rage - 15;
                         _Queue = _Queue + 1;
                         break;
                     end
+
+                    -- Lacerate: refresh at 5 stacks or build stacks
+                    if ConROC:CheckBox(ConROC_SM_DoT_Lacerate) and _Lacerate_RDY and _Rage >= _Lacerate_COST and _Lacerate_COUNT >= 5 and _Lacerate_DUR <= 2 then
+                        tinsert(ConROC.SuggestedSpells, _Lacerate);
+                        _Lacerate_DUR = 15;
+                        _Rage = _Rage - _Lacerate_COST;
+                        _Queue = _Queue + 1;
+                        break;
+                    end
+
+                    if ConROC:CheckBox(ConROC_SM_DoT_Lacerate) and _Lacerate_RDY and _Rage >= _Lacerate_COST and _Lacerate_COUNT < 5 then
+                        tinsert(ConROC.SuggestedSpells, _Lacerate);
+                        _Lacerate_COUNT = _Lacerate_COUNT + 1;
+                        _Lacerate_DUR = 15;
+                        _Rage = _Rage - _Lacerate_COST;
+                        _Queue = _Queue + 1;
+                        break;
+                    end
+
+                    -- Swipe: AoE at 3+ enemies, or rage dump
+                    if _Swipe_RDY and _Rage >= _Swipe_COST and (_enemies_in_melee >= 3 or _Rage >= 60) then
+                        tinsert(ConROC.SuggestedSpells, _Swipe);
+                        _Rage = _Rage - _Swipe_COST;
+                        _Queue = _Queue + 1;
+                        break;
+                    end
+
+                    -- Demoralizing Roar: attack power debuff
+                    if ConROC:CheckBox(ConROC_SM_Debuff_DemoralizingRoar) and _DemoralizingRoar_RDY and not _DemoralizingRoar_DEBUFF then
+                        tinsert(ConROC.SuggestedSpells, _DemoralizingRoar);
+                        _DemoralizingRoar_DEBUFF = true;
+                        _Queue = _Queue + 1;
+                        break;
+                    end
+
+                    -- Maul: rage dump filler
+                    if _Maul_RDY and _Rage >= _Maul_COST then
+                        tinsert(ConROC.SuggestedSpells, _Maul);
+                        _Maul_RDY = false;
+                        _Rage = _Rage - _Maul_COST;
+                        _Queue = _Queue + 1;
+                        break;
+                    end
                 elseif _MoonkinForm_FORM then
+                    -- Pre-combat: cast Starfire to opener
                     if not _in_combat then
                         if _Starfire_RDY then
                             tinsert(ConROC.SuggestedSpells, _Starfire);
                             _Queue = _Queue + 1;
                             break;
                         end
-
-                        if _Wrath_RDY then
-                            tinsert(ConROC.SuggestedSpells, _Wrath);
-                            _Queue = _Queue + 1;
-                            break;
-                        end
                     end
 
-                    if _Hurricane_RDY and (_enemies_in_melee >= 4 or ConROC_AoEButton:IsVisible()) then
+                    -- Force of Nature: summon treants (cooldown)
+                    if ConROC:CheckBox(ConROC_SM_CD_ForceofNature) and _ForceofNature_RDY then
+                        tinsert(ConROC.SuggestedSpells, _ForceofNature);
+                        _ForceofNature_RDY = false;
+                        _Queue = _Queue + 1;
+                        break;
+                    end
+
+                    -- Hurricane: AoE channel
+                    if _Hurricane_RDY and (_enemies_in_30yrds >= 4 or ConROC_AoEButton:IsVisible()) then
                         tinsert(ConROC.SuggestedSpells, _Hurricane);
                         _Hurricane_RDY = false;
                         _Queue = _Queue + 1;
                         break;
                     end
 
-                    if _Moonfire_RDY and not _Moonfire_DEBUFF and ConROC_AoEButton:IsVisible() then
+                    -- Moonfire: apply DoT
+                    if ConROC:CheckBox(ConROC_SM_DoT_Moonfire) and _Moonfire_RDY and not _Moonfire_DEBUFF and _target_in_30yrds then
                         tinsert(ConROC.SuggestedSpells, _Moonfire);
                         _Moonfire_DEBUFF = true;
                         _Queue = _Queue + 1;
                         break;
                     end
 
-                    if _FaerieFire_RDY and not (_FaerieFire_DEBUFF or _FaerieFireFeral_DEBUFF) then
-                        tinsert(ConROC.SuggestedSpells, _FaerieFire);
-                        _FaerieFire_DEBUFF = true;
-                        _Queue = _Queue + 1;
-                        break;
-                    end
-
-                    if _InsectSwarm_RDY and not _InsectSwarm_DEBUFF then
+                    -- Insect Swarm: apply DoT (Balance talent in TBC)
+                    if ConROC:CheckBox(ConROC_SM_DoT_InsectSwarm) and _InsectSwarm_RDY and not _InsectSwarm_DEBUFF then
                         tinsert(ConROC.SuggestedSpells, _InsectSwarm);
                         _InsectSwarm_DEBUFF = true;
                         _Queue = _Queue + 1;
                         break;
                     end
 
-					if _Moonfire_RDY and not _Moonfire_DEBUFF and _target_in_30yrds then
-                        tinsert(ConROC.SuggestedSpells, _Moonfire);
-                        _Moonfire_DEBUFF = true;
+                    -- Faerie Fire: armor debuff
+                    if ConROC:CheckBox(ConROC_SM_Debuff_FaerieFire) and _FaerieFire_RDY and not (_FaerieFire_DEBUFF or _FaerieFireFeral_DEBUFF) then
+                        tinsert(ConROC.SuggestedSpells, _FaerieFire);
+                        _FaerieFire_DEBUFF = true;
                         _Queue = _Queue + 1;
                         break;
                     end
 
+                    -- Starfire: primary filler (longer cast, higher damage)
                     if _Starfire_RDY then
                         tinsert(ConROC.SuggestedSpells, _Starfire);
                         _Queue = _Queue + 1;
@@ -748,8 +475,6 @@ if _FerociousBite_RDY and _Combo >= 5 then
                         break;
                     end
                 end
-            end
-
             tinsert(ConROC.SuggestedSpells, 26008); --Waiting Spell Icon
             _Queue = _Queue + 3;
             break;
@@ -774,13 +499,13 @@ function ConROC.Druid.Defense(_, timeShift, currentSpell, gcd)
     local _Thorns, _Thorns_RDY = ConROC:AbilityReady(Ability.Thorns, timeShift);
         local _Thorns_BUFF = ConROC:Aura(_Thorns, timeShift);
 
+    local _BearForm, _BearForm_RDY = ConROC:AbilityReady(Ability.BearForm, timeShift);
         local _BearForm_FORM = ConROC:Form(_BearForm);
     local _DemoralizingRoar, _DemoralizingRoar_RDY = ConROC:AbilityReady(Ability.DemoralizingRoar, timeShift);
         local _DemoralizingRoar_DEBUFF = ConROC:TargetAura(_DemoralizingRoar, timeShift);
     local _FrenziedRegeneration, _FrenziedRegeneration_RDY = ConROC:AbilityReady(Ability.FrenziedRegeneration, timeShift);
 
     local _ClearCasting_BUFF = ConROC:Aura(Buff.ClearCasting, timeShift);
-    local _FuryofStormrage_BUFF = ConROC:Aura(Buff.FuryofStormrage, timeShift);
 
 --Rotations
     if ConROC:CheckBox(ConROC_SM_Buff_Thorns) and _Thorns_RDY and not _Thorns_BUFF then
@@ -805,7 +530,7 @@ function ConROC.Druid.Defense(_, timeShift, currentSpell, gcd)
         tinsert(ConROC.SuggestedDefSpells, _Barkskin);
     end
 
-    if _HealingTouch_RDY and (_ClearCasting_BUFF or _FuryofStormrage_BUFF) and _Player_Percent_Health < 60 then
+    if _HealingTouch_RDY and _ClearCasting_BUFF and _Player_Percent_Health < 60 then
         tinsert(ConROC.SuggestedDefSpells, _HealingTouch);
     end
 return nil;

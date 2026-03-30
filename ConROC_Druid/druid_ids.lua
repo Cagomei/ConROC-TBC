@@ -69,6 +69,17 @@ ids.Ability = {
 	RemoveCurse = 2782,
 	Swiftmend = 18562,
 	Tranquility = 740,
+--TBC Abilities
+	Cyclone = 33786,
+	FlightForm = 33943,
+	ForceofNature = 33831,
+	Lacerate = 33745,
+	Lifebloom = 33763,
+	Maim = 22570,
+	MangleBear = 33878,
+	MangleCat = 33876,
+	SwiftFlightForm = 40120,
+	TreeofLife = 33891,
 }
 ids.Rank = {
 --Balance
@@ -220,82 +231,123 @@ ids.Rank = {
 	TranquilityRank2 = 8918,
 	TranquilityRank3 = 9862,
 	TranquilityRank4 = 9863,
+	TranquilityRank5 = 26983,
+	-- TBC Ranks
+	EntanglingRootsRank7 = 26989,
+	FaerieFireRank5 = 26993,
+	FaerieFireFeralRank5 = 27011,
+	HurricaneRank4 = 27012,
+	InsectSwarmRank6 = 27013,
+	MoonfireRank11 = 26987,
+	MoonfireRank12 = 26988,
+	NaturesGraspRank7 = 17330,
+	StarfireRank8 = 26986,
+	ThornsRank7 = 26992,
+	WrathRank9 = 26984,
+	WrathRank10 = 26985,
+	-- Feral TBC Ranks
+	ClawRank6 = 27000,
+	DemoralizingRoarRank6 = 26998,
+	FerociousBiteRank5 = 24248,
+	FerociousBiteRank6 = 27557,
+	FrenziedRegenerationRank4 = 26999,
+	LacerateRank1 = 33745,
+	MangleBearRank1 = 33878,
+	MangleBearRank2 = 33986,
+	MangleBearRank3 = 33987,
+	MangleCatRank1 = 33876,
+	MangleCatRank2 = 33982,
+	MangleCatRank3 = 33983,
+	MaulRank8 = 26996,
+	PounceRank4 = 27006,
+	RakeRank5 = 27003,
+	RavageRank5 = 27005,
+	RipRank7 = 27008,
+	ShredRank6 = 27001,
+	ShredRank7 = 27002,
+	SwipeRank6 = 26997,
+	-- Restoration TBC Ranks
+	GiftoftheWildRank3 = 26991,
+	HealingTouchRank11 = 25297,
+	HealingTouchRank12 = 26978,
+	HealingTouchRank13 = 26979,
+	LifebloomRank1 = 33763,
+	LifebloomRank2 = 33778,
+	LifebloomRank3 = 33779,
+	MarkoftheWildRank8 = 26990,
+	RebirthRank6 = 26994,
+	RegrowthRank10 = 26980,
+	RejuvenationRank11 = 25299,
+	RejuvenationRank12 = 26981,
+	RejuvenationRank13 = 26982,
 }
 ids.Balance_Talent = {
-	NaturesGrasp =  1,
-	ImprovedWrath =  2,
-	ImprovedMoonfire =  3,
-	NaturesReach =  4,
-	NaturalShapeshifter = 5,
-	ImprovedThorns =  6,
-	Moonglow =  7,
-	ImprovedStarfire =  8,
-	ImprovedEntanglingRoots =  9,
-	OmenofClarity =  10,
-	NaturesGrace =  11,
-	Moonfury =  12,
-	NaturalWeapons =  13,
-	Vengeance =  14,
-	MoonkinForm =  15,
-	ImprovedNaturesGrasp =  16,
+	StarlightWrath = 1,
+	NaturesGrasp = 2,
+	ImprovedNaturesGrasp = 3,
+	ControlofNature = 4,
+	FocusedStarlight = 5,
+	ImprovedMoonfire = 6,
+	Brambles = 7,
+	InsectSwarm = 8,
+	NaturesReach = 9,
+	Vengeance = 10,
+	CelestialFocus = 11,
+	LunarGuidance = 12,
+	NaturesGrace = 13,
+	Moonglow = 14,
+	BalanceofPower = 15,
+	Dreamstate = 16,
+	MoonkinForm = 17,
+	ImprovedFaerieFire = 18,
+	WrathofCenarius = 19,
+	ForceofNature = 20,
 }
 ids.FeralCombat_Talent = {
-	ThickHide =  1,
-	FeralAggression =  2,
-	Ferocity =  3,
-	BrutalImpact =  4,
-	SharpenedClaws =  5,
-	FeralInstinct =  6,
-	BloodFrenzy =  7,
-	PrimalFury =  8,
-	ImprovedShred =  9,
-	PredatoryStrikes =  10,
-	FeralCharge =  11,
-	SavageFury =  12,
-	FelineSwiftness =  13,
-	HeartoftheWild =  14,
-	LeaderofthePack =  15,
-	FaerieFireFeral =  16,
-} 
+	Ferocity = 1,
+	FeralAggression = 2,
+	FeralInstinct = 3,
+	BrutalImpact = 4,
+	ThickHide = 5,
+	FeralSwiftness = 6,
+	FeralCharge = 7,
+	SharpenedClaws = 8,
+	ShreddingAttacks = 9,
+	PredatoryStrikes = 10,
+	PrimalFury = 11,
+	SavageFury = 12,
+	FaerieFireFeral = 13,
+	NurturingInstinct = 14,
+	HeartoftheWild = 15,
+	SurvivaloftheFittest = 16,
+	LeaderofthePack = 17,
+	ImprovedLeaderofthePack = 18,
+	PredatoryInstincts = 19,
+	Mangle = 20,
+}
 ids.Restoration_Talent = {
-	ImprovedMarkoftheWild =  1,
-	Furor =  2,
-	NaturesFocus =  3,
-	ImprovedHealingTouch =  4,
-	ImprovedRegrowth =  5,
-	ImprovedEnrage =  6,
-	InsectSwarm =  7,
-	GiftofNature =  8,
-	Reflection =  9,
-	ImprovedRejuvenation =  10,
-	NaturesSwiftness =  11,
-	Subtlety =  12,
-	ImprovedTranquility =  13,
-	TranquilSpirit =  14,
-	Swiftmend =  15,
-}
-ids.Engrave = {
-	--Waist--
-	Eclipse = 7106,
-}
-ids.Runes = {
-	Berserk = 417141,
-	StarSurge = 417157,
-	Starfall = 439748,
-	Sunfire = 414684,
-	SwipeCF = 411128,
-
-	MangleBear = 407995,
-	MangleCat = 407993,
-	Lacerate = 414644,
-	SavageRoar = 407988,
-	SkullBash = 410176,
-	KingoftheJungle = 417046, --phase 2 - passive
+	ImprovedMarkoftheWild = 1,
+	Furor = 2,
+	Naturalist = 3,
+	NaturesFocus = 4,
+	NaturalShapeshifter = 5,
+	Intensity = 6,
+	Subtlety = 7,
+	OmenofClarity = 8,
+	TranquilSpirit = 9,
+	ImprovedRejuvenation = 10,
+	NaturesSwiftness = 11,
+	GiftofNature = 12,
+	ImprovedTranquility = 13,
+	EmpoweredTouch = 14,
+	ImprovedRegrowth = 15,
+	LivingSpirit = 16,
+	Swiftmend = 17,
+	NaturalPerfection = 18,
+	EmpoweredRejuvenation = 19,
+	TreeofLife = 20,
 }
 ids.Buff = {
-	EclipseLunar = 408255,
-	EclipseSolar = 408250,
-	FuryofStormrage = 414800,
 	ClearCasting = 16870,
 }
 ids.Debuff = {
@@ -304,17 +356,21 @@ ids.Debuff = {
 
 function ConROC:UpdateSpellID()
 --Ranks
-	if IsSpellKnown(ids.Rank.FaerieFireRank4) then ids.Ability.FaerieFire = ids.Rank.FaerieFireRank4;
+	if IsSpellKnown(ids.Rank.FaerieFireRank5) then ids.Ability.FaerieFire = ids.Rank.FaerieFireRank5;
+	elseif IsSpellKnown(ids.Rank.FaerieFireRank4) then ids.Ability.FaerieFire = ids.Rank.FaerieFireRank4;
 	elseif IsSpellKnown(ids.Rank.FaerieFireRank3) then ids.Ability.FaerieFire = ids.Rank.FaerieFireRank3;
 	elseif IsSpellKnown(ids.Rank.FaerieFireRank2) then ids.Ability.FaerieFire = ids.Rank.FaerieFireRank2; end
 
 	if IsSpellKnown(ids.Rank.HibernateRank3) then ids.Ability.Hibernate = ids.Rank.HibernateRank3;
 	elseif IsSpellKnown(ids.Rank.HibernateRank2) then ids.Ability.Hibernate = ids.Rank.HibernateRank2; end
 
-	if IsSpellKnown(ids.Rank.HurricaneRank3) then ids.Ability.Hurricane = ids.Rank.HurricaneRank3;
+	if IsSpellKnown(ids.Rank.HurricaneRank4) then ids.Ability.Hurricane = ids.Rank.HurricaneRank4;
+	elseif IsSpellKnown(ids.Rank.HurricaneRank3) then ids.Ability.Hurricane = ids.Rank.HurricaneRank3;
 	elseif IsSpellKnown(ids.Rank.HurricaneRank2) then ids.Ability.Hurricane = ids.Rank.HurricaneRank2; end
 
-	if IsSpellKnown(ids.Rank.MoonfireRank10) then ids.Ability.Moonfire = ids.Rank.MoonfireRank10;
+	if IsSpellKnown(ids.Rank.MoonfireRank12) then ids.Ability.Moonfire = ids.Rank.MoonfireRank12;
+	elseif IsSpellKnown(ids.Rank.MoonfireRank11) then ids.Ability.Moonfire = ids.Rank.MoonfireRank11;
+	elseif IsSpellKnown(ids.Rank.MoonfireRank10) then ids.Ability.Moonfire = ids.Rank.MoonfireRank10;
 	elseif IsSpellKnown(ids.Rank.MoonfireRank9) then ids.Ability.Moonfire = ids.Rank.MoonfireRank9;
 	elseif IsSpellKnown(ids.Rank.MoonfireRank8) then ids.Ability.Moonfire = ids.Rank.MoonfireRank8;
 	elseif IsSpellKnown(ids.Rank.MoonfireRank7) then ids.Ability.Moonfire = ids.Rank.MoonfireRank7;
@@ -327,14 +383,17 @@ function ConROC:UpdateSpellID()
 	if IsSpellKnown(ids.Rank.SootheAnimalRank3) then ids.Ability.SootheAnimal = ids.Rank.SootheAnimalRank3;
 	elseif IsSpellKnown(ids.Rank.SootheAnimalRank2) then ids.Ability.SootheAnimal = ids.Rank.SootheAnimalRank2; end
 
-	if IsSpellKnown(ids.Rank.StarfireRank7) then ids.Ability.Starfire = ids.Rank.StarfireRank7;
+	if IsSpellKnown(ids.Rank.StarfireRank8) then ids.Ability.Starfire = ids.Rank.StarfireRank8;
+	elseif IsSpellKnown(ids.Rank.StarfireRank7) then ids.Ability.Starfire = ids.Rank.StarfireRank7;
 	elseif IsSpellKnown(ids.Rank.StarfireRank6) then ids.Ability.Starfire = ids.Rank.StarfireRank6;
 	elseif IsSpellKnown(ids.Rank.StarfireRank5) then ids.Ability.Starfire = ids.Rank.StarfireRank5;
 	elseif IsSpellKnown(ids.Rank.StarfireRank4) then ids.Ability.Starfire = ids.Rank.StarfireRank4;
 	elseif IsSpellKnown(ids.Rank.StarfireRank3) then ids.Ability.Starfire = ids.Rank.StarfireRank3;
 	elseif IsSpellKnown(ids.Rank.StarfireRank2) then ids.Ability.Starfire = ids.Rank.StarfireRank2; end
 
-	if IsSpellKnown(ids.Rank.WrathRank8) then ids.Ability.Wrath = ids.Rank.WrathRank8;
+	if IsSpellKnown(ids.Rank.WrathRank10) then ids.Ability.Wrath = ids.Rank.WrathRank10;
+	elseif IsSpellKnown(ids.Rank.WrathRank9) then ids.Ability.Wrath = ids.Rank.WrathRank9;
+	elseif IsSpellKnown(ids.Rank.WrathRank8) then ids.Ability.Wrath = ids.Rank.WrathRank8;
 	elseif IsSpellKnown(ids.Rank.WrathRank7) then ids.Ability.Wrath = ids.Rank.WrathRank7;
 	elseif IsSpellKnown(ids.Rank.WrathRank6) then ids.Ability.Wrath = ids.Rank.WrathRank6;
 	elseif IsSpellKnown(ids.Rank.WrathRank5) then ids.Ability.Wrath = ids.Rank.WrathRank5;
@@ -347,54 +406,66 @@ function ConROC:UpdateSpellID()
 
 	if IsSpellKnown(ids.Ability.DireBearForm) then ids.Ability.BearForm = ids.Ability.DireBearForm; end
 
-	if IsSpellKnown(ids.Rank.ClawRank5) then ids.Ability.Claw = ids.Rank.ClawRank5;
+	if IsSpellKnown(ids.Rank.ClawRank6) then ids.Ability.Claw = ids.Rank.ClawRank6;
+	elseif IsSpellKnown(ids.Rank.ClawRank5) then ids.Ability.Claw = ids.Rank.ClawRank5;
 	elseif IsSpellKnown(ids.Rank.ClawRank4) then ids.Ability.Claw = ids.Rank.ClawRank4;
 	elseif IsSpellKnown(ids.Rank.ClawRank3) then ids.Ability.Claw = ids.Rank.ClawRank3;
 	elseif IsSpellKnown(ids.Rank.ClawRank2) then ids.Ability.Claw = ids.Rank.ClawRank2; end
 
 	if IsSpellKnown(ids.Rank.DashRank2) then ids.Ability.Dash = ids.Rank.DashRank2; end
 
-	if IsSpellKnown(ids.Rank.FaerieFireFeralRank4) then ids.Ability.FaerieFireFeral = ids.Rank.FaerieFireFeralRank4;
+	if IsSpellKnown(ids.Rank.FaerieFireFeralRank5) then ids.Ability.FaerieFireFeral = ids.Rank.FaerieFireFeralRank5;
+	elseif IsSpellKnown(ids.Rank.FaerieFireFeralRank4) then ids.Ability.FaerieFireFeral = ids.Rank.FaerieFireFeralRank4;
 	elseif IsSpellKnown(ids.Rank.FaerieFireFeralRank3) then ids.Ability.FaerieFireFeral = ids.Rank.FaerieFireFeralRank3;
 	elseif IsSpellKnown(ids.Rank.FaerieFireFeralRank2) then ids.Ability.FaerieFireFeral = ids.Rank.FaerieFireFeralRank2; end
 
-	if IsSpellKnown(ids.Rank.FerociousBiteRank4) then ids.Ability.FerociousBite = ids.Rank.FerociousBiteRank4;
+	if IsSpellKnown(ids.Rank.FerociousBiteRank6) then ids.Ability.FerociousBite = ids.Rank.FerociousBiteRank6;
+	elseif IsSpellKnown(ids.Rank.FerociousBiteRank5) then ids.Ability.FerociousBite = ids.Rank.FerociousBiteRank5;
+	elseif IsSpellKnown(ids.Rank.FerociousBiteRank4) then ids.Ability.FerociousBite = ids.Rank.FerociousBiteRank4;
 	elseif IsSpellKnown(ids.Rank.FerociousBiteRank3) then ids.Ability.FerociousBite = ids.Rank.FerociousBiteRank3;
 	elseif IsSpellKnown(ids.Rank.FerociousBiteRank2) then ids.Ability.FerociousBite = ids.Rank.FerociousBiteRank2; end
 
-	if IsSpellKnown(ids.Rank.MaulRank7) then ids.Ability.Maul = ids.Rank.MaulRank7;
+	if IsSpellKnown(ids.Rank.MaulRank8) then ids.Ability.Maul = ids.Rank.MaulRank8;
+	elseif IsSpellKnown(ids.Rank.MaulRank7) then ids.Ability.Maul = ids.Rank.MaulRank7;
 	elseif IsSpellKnown(ids.Rank.MaulRank6) then ids.Ability.Maul = ids.Rank.MaulRank6;
 	elseif IsSpellKnown(ids.Rank.MaulRank5) then ids.Ability.Maul = ids.Rank.MaulRank5;
 	elseif IsSpellKnown(ids.Rank.MaulRank4) then ids.Ability.Maul = ids.Rank.MaulRank4;
 	elseif IsSpellKnown(ids.Rank.MaulRank3) then ids.Ability.Maul = ids.Rank.MaulRank3;
 	elseif IsSpellKnown(ids.Rank.MaulRank2) then ids.Ability.Maul = ids.Rank.MaulRank2; end
 
-	if IsSpellKnown(ids.Rank.PounceRank3) then ids.Ability.Pounce = ids.Rank.PounceRank3;
+	if IsSpellKnown(ids.Rank.PounceRank4) then ids.Ability.Pounce = ids.Rank.PounceRank4;
+	elseif IsSpellKnown(ids.Rank.PounceRank3) then ids.Ability.Pounce = ids.Rank.PounceRank3;
 	elseif IsSpellKnown(ids.Rank.PounceRank2) then ids.Ability.Pounce = ids.Rank.PounceRank2; end
 
 	if IsSpellKnown(ids.Rank.ProwlRank3) then ids.Ability.Prowl = ids.Rank.ProwlRank3;
 	elseif IsSpellKnown(ids.Rank.ProwlRank2) then ids.Ability.Prowl = ids.Rank.ProwlRank2; end
 
-	if IsSpellKnown(ids.Rank.RakeRank4) then ids.Ability.Rake = ids.Rank.RakeRank4;
+	if IsSpellKnown(ids.Rank.RakeRank5) then ids.Ability.Rake = ids.Rank.RakeRank5;
+	elseif IsSpellKnown(ids.Rank.RakeRank4) then ids.Ability.Rake = ids.Rank.RakeRank4;
 	elseif IsSpellKnown(ids.Rank.RakeRank3) then ids.Ability.Rake = ids.Rank.RakeRank3;
 	elseif IsSpellKnown(ids.Rank.RakeRank2) then ids.Ability.Rake = ids.Rank.RakeRank2; end
 
-	if IsSpellKnown(ids.Rank.RavageRank4) then ids.Ability.Ravage = ids.Rank.RavageRank4;
+	if IsSpellKnown(ids.Rank.RavageRank5) then ids.Ability.Ravage = ids.Rank.RavageRank5;
+	elseif IsSpellKnown(ids.Rank.RavageRank4) then ids.Ability.Ravage = ids.Rank.RavageRank4;
 	elseif IsSpellKnown(ids.Rank.RavageRank3) then ids.Ability.Ravage = ids.Rank.RavageRank3;
 	elseif IsSpellKnown(ids.Rank.RavageRank2) then ids.Ability.Ravage = ids.Rank.RavageRank2; end
 
-	if IsSpellKnown(ids.Rank.RipRank6) then ids.Ability.Rip = ids.Rank.RipRank6;
+	if IsSpellKnown(ids.Rank.RipRank7) then ids.Ability.Rip = ids.Rank.RipRank7;
+	elseif IsSpellKnown(ids.Rank.RipRank6) then ids.Ability.Rip = ids.Rank.RipRank6;
 	elseif IsSpellKnown(ids.Rank.RipRank5) then ids.Ability.Rip = ids.Rank.RipRank5;
 	elseif IsSpellKnown(ids.Rank.RipRank4) then ids.Ability.Rip = ids.Rank.RipRank4;
 	elseif IsSpellKnown(ids.Rank.RipRank3) then ids.Ability.Rip = ids.Rank.RipRank3;
 	elseif IsSpellKnown(ids.Rank.RipRank2) then ids.Ability.Rip = ids.Rank.RipRank2; end
 
-	if IsSpellKnown(ids.Rank.ShredRank5) then ids.Ability.Shred = ids.Rank.ShredRank5;
+	if IsSpellKnown(ids.Rank.ShredRank7) then ids.Ability.Shred = ids.Rank.ShredRank7;
+	elseif IsSpellKnown(ids.Rank.ShredRank6) then ids.Ability.Shred = ids.Rank.ShredRank6;
+	elseif IsSpellKnown(ids.Rank.ShredRank5) then ids.Ability.Shred = ids.Rank.ShredRank5;
 	elseif IsSpellKnown(ids.Rank.ShredRank4) then ids.Ability.Shred = ids.Rank.ShredRank4;
 	elseif IsSpellKnown(ids.Rank.ShredRank3) then ids.Ability.Shred = ids.Rank.ShredRank3;
 	elseif IsSpellKnown(ids.Rank.ShredRank2) then ids.Ability.Shred = ids.Rank.ShredRank2; end
 
-	if IsSpellKnown(ids.Rank.SwipeRank5) then ids.Ability.Swipe = ids.Rank.SwipeRank5;
+	if IsSpellKnown(ids.Rank.SwipeRank6) then ids.Ability.Swipe = ids.Rank.SwipeRank6;
+	elseif IsSpellKnown(ids.Rank.SwipeRank5) then ids.Ability.Swipe = ids.Rank.SwipeRank5;
 	elseif IsSpellKnown(ids.Rank.SwipeRank4) then ids.Ability.Swipe = ids.Rank.SwipeRank4;
 	elseif IsSpellKnown(ids.Rank.SwipeRank3) then ids.Ability.Swipe = ids.Rank.SwipeRank3;
 	elseif IsSpellKnown(ids.Rank.SwipeRank2) then ids.Ability.Swipe = ids.Rank.SwipeRank2; end
@@ -403,7 +474,10 @@ function ConROC:UpdateSpellID()
 	elseif IsSpellKnown(ids.Rank.TigersFuryRank3) then ids.Ability.TigersFury = ids.Rank.TigersFuryRank3;
 	elseif IsSpellKnown(ids.Rank.TigersFuryRank2) then ids.Ability.TigersFury = ids.Rank.TigersFuryRank2; end
 
-	if IsSpellKnown(ids.Rank.HealingTouchRank10) then ids.Ability.HealingTouch = ids.Rank.HealingTouchRank10;
+	if IsSpellKnown(ids.Rank.HealingTouchRank13) then ids.Ability.HealingTouch = ids.Rank.HealingTouchRank13;
+	elseif IsSpellKnown(ids.Rank.HealingTouchRank12) then ids.Ability.HealingTouch = ids.Rank.HealingTouchRank12;
+	elseif IsSpellKnown(ids.Rank.HealingTouchRank11) then ids.Ability.HealingTouch = ids.Rank.HealingTouchRank11;
+	elseif IsSpellKnown(ids.Rank.HealingTouchRank10) then ids.Ability.HealingTouch = ids.Rank.HealingTouchRank10;
 	elseif IsSpellKnown(ids.Rank.HealingTouchRank9) then ids.Ability.HealingTouch = ids.Rank.HealingTouchRank9;
 	elseif IsSpellKnown(ids.Rank.HealingTouchRank8) then ids.Ability.HealingTouch = ids.Rank.HealingTouchRank8;
 	elseif IsSpellKnown(ids.Rank.HealingTouchRank7) then ids.Ability.HealingTouch = ids.Rank.HealingTouchRank7;
@@ -413,24 +487,28 @@ function ConROC:UpdateSpellID()
 	elseif IsSpellKnown(ids.Rank.HealingTouchRank3) then ids.Ability.HealingTouch = ids.Rank.HealingTouchRank3;
 	elseif IsSpellKnown(ids.Rank.HealingTouchRank2) then ids.Ability.HealingTouch = ids.Rank.HealingTouchRank2; end
 
-	if IsSpellKnown(ids.Rank.InsectSwarmRank5) then ids.Ability.InsectSwarm = ids.Rank.InsectSwarmRank5;
+	if IsSpellKnown(ids.Rank.InsectSwarmRank6) then ids.Ability.InsectSwarm = ids.Rank.InsectSwarmRank6;
+	elseif IsSpellKnown(ids.Rank.InsectSwarmRank5) then ids.Ability.InsectSwarm = ids.Rank.InsectSwarmRank5;
 	elseif IsSpellKnown(ids.Rank.InsectSwarmRank4) then ids.Ability.InsectSwarm = ids.Rank.InsectSwarmRank4;
 	elseif IsSpellKnown(ids.Rank.InsectSwarmRank3) then ids.Ability.InsectSwarm = ids.Rank.InsectSwarmRank3;
 	elseif IsSpellKnown(ids.Rank.InsectSwarmRank2) then ids.Ability.InsectSwarm = ids.Rank.InsectSwarmRank2; end
 
-	if IsSpellKnown(ids.Rank.MarkoftheWildRank7) then ids.Ability.MarkoftheWild = ids.Rank.MarkoftheWildRank7;
+	if IsSpellKnown(ids.Rank.MarkoftheWildRank8) then ids.Ability.MarkoftheWild = ids.Rank.MarkoftheWildRank8;
+	elseif IsSpellKnown(ids.Rank.MarkoftheWildRank7) then ids.Ability.MarkoftheWild = ids.Rank.MarkoftheWildRank7;
 	elseif IsSpellKnown(ids.Rank.MarkoftheWildRank6) then ids.Ability.MarkoftheWild = ids.Rank.MarkoftheWildRank6;
 	elseif IsSpellKnown(ids.Rank.MarkoftheWildRank5) then ids.Ability.MarkoftheWild = ids.Rank.MarkoftheWildRank5;
 	elseif IsSpellKnown(ids.Rank.MarkoftheWildRank4) then ids.Ability.MarkoftheWild = ids.Rank.MarkoftheWildRank4;
 	elseif IsSpellKnown(ids.Rank.MarkoftheWildRank3) then ids.Ability.MarkoftheWild = ids.Rank.MarkoftheWildRank3;
 	elseif IsSpellKnown(ids.Rank.MarkoftheWildRank2) then ids.Ability.MarkoftheWild = ids.Rank.MarkoftheWildRank2; end
 
-	if IsSpellKnown(ids.Rank.RebirthRank5) then ids.Ability.Rebirth = ids.Rank.RebirthRank5;
+	if IsSpellKnown(ids.Rank.RebirthRank6) then ids.Ability.Rebirth = ids.Rank.RebirthRank6;
+	elseif IsSpellKnown(ids.Rank.RebirthRank5) then ids.Ability.Rebirth = ids.Rank.RebirthRank5;
 	elseif IsSpellKnown(ids.Rank.RebirthRank4) then ids.Ability.Rebirth = ids.Rank.RebirthRank4;
 	elseif IsSpellKnown(ids.Rank.RebirthRank3) then ids.Ability.Rebirth = ids.Rank.RebirthRank3;
 	elseif IsSpellKnown(ids.Rank.RebirthRank2) then ids.Ability.Rebirth = ids.Rank.RebirthRank2; end
 
-	if IsSpellKnown(ids.Rank.RegrowthRank9) then ids.Ability.Regrowth = ids.Rank.RegrowthRank9;
+	if IsSpellKnown(ids.Rank.RegrowthRank10) then ids.Ability.Regrowth = ids.Rank.RegrowthRank10;
+	elseif IsSpellKnown(ids.Rank.RegrowthRank9) then ids.Ability.Regrowth = ids.Rank.RegrowthRank9;
 	elseif IsSpellKnown(ids.Rank.RegrowthRank8) then ids.Ability.Regrowth = ids.Rank.RegrowthRank8;
 	elseif IsSpellKnown(ids.Rank.RegrowthRank7) then ids.Ability.Regrowth = ids.Rank.RegrowthRank7;
 	elseif IsSpellKnown(ids.Rank.RegrowthRank6) then ids.Ability.Regrowth = ids.Rank.RegrowthRank6;
@@ -439,7 +517,10 @@ function ConROC:UpdateSpellID()
 	elseif IsSpellKnown(ids.Rank.RegrowthRank3) then ids.Ability.Regrowth = ids.Rank.RegrowthRank3;
 	elseif IsSpellKnown(ids.Rank.RegrowthRank2) then ids.Ability.Regrowth = ids.Rank.RegrowthRank2; end
 
-	if IsSpellKnown(ids.Rank.RejuvenationRank10) then ids.Ability.Rejuvenation = ids.Rank.RejuvenationRank10;
+	if IsSpellKnown(ids.Rank.RejuvenationRank13) then ids.Ability.Rejuvenation = ids.Rank.RejuvenationRank13;
+	elseif IsSpellKnown(ids.Rank.RejuvenationRank12) then ids.Ability.Rejuvenation = ids.Rank.RejuvenationRank12;
+	elseif IsSpellKnown(ids.Rank.RejuvenationRank11) then ids.Ability.Rejuvenation = ids.Rank.RejuvenationRank11;
+	elseif IsSpellKnown(ids.Rank.RejuvenationRank10) then ids.Ability.Rejuvenation = ids.Rank.RejuvenationRank10;
 	elseif IsSpellKnown(ids.Rank.RejuvenationRank9) then ids.Ability.Rejuvenation = ids.Rank.RejuvenationRank9;
 	elseif IsSpellKnown(ids.Rank.RejuvenationRank8) then ids.Ability.Rejuvenation = ids.Rank.RejuvenationRank8;
 	elseif IsSpellKnown(ids.Rank.RejuvenationRank7) then ids.Ability.Rejuvenation = ids.Rank.RejuvenationRank7;
@@ -449,7 +530,8 @@ function ConROC:UpdateSpellID()
 	elseif IsSpellKnown(ids.Rank.RejuvenationRank3) then ids.Ability.Rejuvenation = ids.Rank.RejuvenationRank3;
 	elseif IsSpellKnown(ids.Rank.RejuvenationRank2) then ids.Ability.Rejuvenation = ids.Rank.RejuvenationRank2; end
 
-	if IsSpellKnown(ids.Rank.TranquilityRank4) then ids.Ability.Tranquility = ids.Rank.TranquilityRank4;
+	if IsSpellKnown(ids.Rank.TranquilityRank5) then ids.Ability.Tranquility = ids.Rank.TranquilityRank5;
+	elseif IsSpellKnown(ids.Rank.TranquilityRank4) then ids.Ability.Tranquility = ids.Rank.TranquilityRank4;
 	elseif IsSpellKnown(ids.Rank.TranquilityRank3) then ids.Ability.Tranquility = ids.Rank.TranquilityRank3;
 	elseif IsSpellKnown(ids.Rank.TranquilityRank2) then ids.Ability.Tranquility = ids.Rank.TranquilityRank2; end
 
@@ -479,6 +561,26 @@ function ConROC:UpdateSpellID()
     elseif IsSpellKnown(ids.Rank.DemoralizingRoarRank3) then ids.Ability.DemoralizingRoar = ids.Rank.DemoralizingRoarRank3;
     elseif IsSpellKnown(ids.Rank.DemoralizingRoarRank2) then ids.Ability.DemoralizingRoar = ids.Rank.DemoralizingRoarRank2; end
 
-    if IsSpellKnown(ids.Rank.FrenziedRegenerationRank3) then ids.Ability.FrenziedRegeneration = ids.Rank.FrenziedRegenerationRank3;
+    if IsSpellKnown(ids.Rank.FrenziedRegenerationRank4) then ids.Ability.FrenziedRegeneration = ids.Rank.FrenziedRegenerationRank4;
+    elseif IsSpellKnown(ids.Rank.FrenziedRegenerationRank3) then ids.Ability.FrenziedRegeneration = ids.Rank.FrenziedRegenerationRank3;
     elseif IsSpellKnown(ids.Rank.FrenziedRegenerationRank2) then ids.Ability.FrenziedRegeneration = ids.Rank.FrenziedRegenerationRank2; end
+
+    -- TBC abilities
+    if IsSpellKnown(ids.Rank.MangleBearRank3) then ids.Ability.MangleBear = ids.Rank.MangleBearRank3;
+    elseif IsSpellKnown(ids.Rank.MangleBearRank2) then ids.Ability.MangleBear = ids.Rank.MangleBearRank2;
+    elseif IsSpellKnown(ids.Rank.MangleBearRank1) then ids.Ability.MangleBear = ids.Rank.MangleBearRank1; end
+
+    if IsSpellKnown(ids.Rank.MangleCatRank3) then ids.Ability.MangleCat = ids.Rank.MangleCatRank3;
+    elseif IsSpellKnown(ids.Rank.MangleCatRank2) then ids.Ability.MangleCat = ids.Rank.MangleCatRank2;
+    elseif IsSpellKnown(ids.Rank.MangleCatRank1) then ids.Ability.MangleCat = ids.Rank.MangleCatRank1; end
+
+    if IsSpellKnown(ids.Rank.LifebloomRank3) then ids.Ability.Lifebloom = ids.Rank.LifebloomRank3;
+    elseif IsSpellKnown(ids.Rank.LifebloomRank2) then ids.Ability.Lifebloom = ids.Rank.LifebloomRank2;
+    elseif IsSpellKnown(ids.Rank.LifebloomRank1) then ids.Ability.Lifebloom = ids.Rank.LifebloomRank1; end
+
+    if IsSpellKnown(ids.Rank.DemoralizingRoarRank6) then ids.Ability.DemoralizingRoar = ids.Rank.DemoralizingRoarRank6;
+    elseif IsSpellKnown(ids.Rank.DemoralizingRoarRank5) then ids.Ability.DemoralizingRoar = ids.Rank.DemoralizingRoarRank5;
+    elseif IsSpellKnown(ids.Rank.DemoralizingRoarRank4) then ids.Ability.DemoralizingRoar = ids.Rank.DemoralizingRoarRank4;
+    elseif IsSpellKnown(ids.Rank.DemoralizingRoarRank3) then ids.Ability.DemoralizingRoar = ids.Rank.DemoralizingRoarRank3;
+    elseif IsSpellKnown(ids.Rank.DemoralizingRoarRank2) then ids.Ability.DemoralizingRoar = ids.Rank.DemoralizingRoarRank2; end
 end
